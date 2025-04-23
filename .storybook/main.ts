@@ -12,5 +12,10 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  staticDirs: ["../public"],
+  viteFinal: (config) => {
+    config.base = "/yasmro-ui/";
+    return config;
+  },
 };
 export default config;
