@@ -1,0 +1,111 @@
+{
+  "name": "@yasmro/design-system",
+  "version": "0.0.1",
+  "packageManager": "pnpm@9.15.0",
+  "description": "Design system with CSS variants and React components",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./core/tokens": {
+      "import": "./dist/core/tokens/index.css",
+      "require": "./dist/core/tokens/index.css"
+    },
+    "./themes/default": {
+      "import": "./dist/themes/default/index.css",
+      "require": "./dist/themes/default/index.css"
+    },
+    "./themes/seasonal": {
+      "import": "./dist/themes/seasonal/index.js",
+      "require": "./dist/themes/seasonal/index.cjs",
+      "types": "./dist/themes/seasonal/index.d.ts"
+    },
+    "./themes/seasonal/themes.css": {
+      "import": "./dist/themes/seasonal/themes.css",
+      "require": "./dist/themes/seasonal/themes.css"
+    },
+    "./variants": {
+      "import": "./dist/variants/index.js",
+      "require": "./dist/variants/index.cjs",
+      "types": "./dist/variants/index.d.ts"
+    },
+    "./components": {
+      "import": "./dist/components/index.js",
+      "require": "./dist/components/index.cjs",
+      "types": "./dist/components/index.d.ts"
+    },
+    "./components/lv1": {
+      "import": "./dist/components/lv1/index.js",
+      "require": "./dist/components/lv1/index.cjs",
+      "types": "./dist/components/lv1/index.d.ts"
+    },
+    "./components/lv2": {
+      "import": "./dist/components/lv2/index.js",
+      "require": "./dist/components/lv2/index.cjs",
+      "types": "./dist/components/lv2/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "tsup",
+    "build:storybook": "storybook build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.4",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lightningcss": "^1.28.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "storybook": "^8.4.7",
+    "tailwind-merge": "^2.6.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yasmro/yasmro-ui.git"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "tailwind",
+    "cva"
+  ]
+}

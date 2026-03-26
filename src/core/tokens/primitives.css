@@ -1,0 +1,58 @@
+/*
+ * Primitive Tokens (lv1)
+ * Raw color palette - these are the "inventory" of colors
+ */
+
+:root {
+  /* Gray scale */
+  --gray-50: oklch(0.98 0 0);
+  --gray-100: oklch(0.96 0 0);
+  --gray-200: oklch(0.91 0 0);
+  --gray-300: oklch(0.83 0 0);
+  --gray-400: oklch(0.71 0 0);
+  --gray-500: oklch(0.58 0 0);
+  --gray-600: oklch(0.48 0 0);
+  --gray-700: oklch(0.37 0 0);
+  --gray-800: oklch(0.27 0 0);
+  --gray-900: oklch(0.18 0 0);
+  --gray-950: oklch(0.12 0 0);
+
+  /* Base colors */
+  --ink: oklch(0.15 0.01 250);
+  --paper-white: oklch(0.98 0.005 90);
+  --paper-warm: oklch(0.96 0.01 85);
+
+  /* Accent: Vermillion (Japanese traditional) */
+  --vermillion-100: oklch(0.96 0.04 25);
+  --vermillion-200: oklch(0.91 0.08 25);
+  --vermillion-300: oklch(0.83 0.12 25);
+  --vermillion-400: oklch(0.74 0.14 25);
+  --vermillion-500: oklch(0.64 0.16 25);
+  --vermillion-600: oklch(0.56 0.14 25);
+  --vermillion-700: oklch(0.46 0.12 25);
+  --vermillion-800: oklch(0.36 0.10 25);
+  --vermillion-900: oklch(0.27 0.08 25);
+
+  /* Blue scale (default primary) */
+  --blue-100: oklch(0.96 0.02 250);
+  --blue-200: oklch(0.91 0.04 250);
+  --blue-300: oklch(0.83 0.07 250);
+  --blue-400: oklch(0.74 0.09 250);
+  --blue-500: oklch(0.64 0.10 250);
+  --blue-600: oklch(0.56 0.10 250);
+  --blue-700: oklch(0.46 0.09 250);
+  --blue-800: oklch(0.36 0.08 250);
+  --blue-900: oklch(0.27 0.06 250);
+
+  /* Success (Green) */
+  --green-500: oklch(0.64 0.12 145);
+  --green-600: oklch(0.56 0.11 145);
+
+  /* Warning (Amber) */
+  --amber-500: oklch(0.64 0.12 70);
+  --amber-600: oklch(0.56 0.11 70);
+
+  /* Error (Red) */
+  --red-500: oklch(0.64 0.16 25);
+  --red-600: oklch(0.56 0.15 25);
+}
