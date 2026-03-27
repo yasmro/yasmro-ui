@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "../core/tokens/base.css";
+@import "../themes/seasonal/themes.css";
+
+/* Class-based dark mode variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Base styles */
+body {
+  background-color: var(--paper-warm);
+  color: var(--ink-black);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Storybook preview container */
+.docs-story,
+.sb-show-main {
+  background-color: var(--paper-warm) !important;
+}

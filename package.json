@@ -17,33 +17,33 @@
       "require": "./dist/themes/default/index.css"
     },
     "./themes/seasonal": {
+      "types": "./dist/themes/seasonal/index.d.ts",
       "import": "./dist/themes/seasonal/index.js",
-      "require": "./dist/themes/seasonal/index.cjs",
-      "types": "./dist/themes/seasonal/index.d.ts"
+      "require": "./dist/themes/seasonal/index.cjs"
     },
     "./themes/seasonal/themes.css": {
       "import": "./dist/themes/seasonal/themes.css",
       "require": "./dist/themes/seasonal/themes.css"
     },
     "./variants": {
+      "types": "./dist/variants/index.d.ts",
       "import": "./dist/variants/index.js",
-      "require": "./dist/variants/index.cjs",
-      "types": "./dist/variants/index.d.ts"
+      "require": "./dist/variants/index.cjs"
     },
     "./components": {
+      "types": "./dist/components/index.d.ts",
       "import": "./dist/components/index.js",
-      "require": "./dist/components/index.cjs",
-      "types": "./dist/components/index.d.ts"
+      "require": "./dist/components/index.cjs"
     },
     "./components/lv1": {
+      "types": "./dist/components/lv1/index.d.ts",
       "import": "./dist/components/lv1/index.js",
-      "require": "./dist/components/lv1/index.cjs",
-      "types": "./dist/components/lv1/index.d.ts"
+      "require": "./dist/components/lv1/index.cjs"
     },
     "./components/lv2": {
+      "types": "./dist/components/lv2/index.d.ts",
       "import": "./dist/components/lv2/index.js",
-      "require": "./dist/components/lv2/index.cjs",
-      "types": "./dist/components/lv2/index.d.ts"
+      "require": "./dist/components/lv2/index.cjs"
     }
   },
   "files": [
@@ -51,7 +51,8 @@
   ],
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build": "tsup",
+    "build": "tsup && pnpm build:css",
+    "build:css": "mkdir -p dist/core/tokens dist/themes/default dist/themes/seasonal && cp src/core/tokens/*.css dist/core/tokens/ && cp src/themes/default/*.css dist/themes/default/ && cp src/themes/seasonal/*.css dist/themes/seasonal/",
     "build:storybook": "storybook build",
     "test": "vitest",
     "test:ui": "vitest --ui",
@@ -73,25 +74,26 @@
   },
   "devDependencies": {
     "@radix-ui/react-dialog": "^1.1.4",
-    "@radix-ui/react-slot": "^1.1.1",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/react": "^8.4.7",
     "@storybook/react-vite": "^8.4.7",
+    "@tailwindcss/vite": "^4.2.2",
+    "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
+    "jsdom": "24",
     "lightningcss": "^1.28.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "storybook": "^8.4.7",
-    "tailwind-merge": "^2.6.0",
+    "tailwindcss": "^4.2.2",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.6.0"

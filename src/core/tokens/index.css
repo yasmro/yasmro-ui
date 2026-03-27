@@ -1,4 +1,14 @@
-/* Core Tokens - import this to get all tokens */
+/*
+ * Core Tokens - Alternative Entry Point
+ *
+ * NOTE: For Tailwind CSS v4 integration, use base.css instead.
+ * This file provides raw tokens without @theme registration.
+ *
+ * Use this when:
+ * - Building non-Tailwind projects
+ * - Consuming tokens in plain CSS
+ * - SSR environments that need raw CSS variables
+ */
 @import './primitives.css';
 @import './semantic.css';
 @import './typography.css';

@@ -1,0 +1,198 @@
+/*
+ * Design Tokens - Base Configuration
+ *
+ * This file imports primitive and semantic tokens, then registers them
+ * with Tailwind CSS v4 via @theme blocks.
+ *
+ * Token Hierarchy:
+ * 1. primitives.css - Raw color values in OKLCH
+ * 2. semantic.css   - Meaningful names referencing primitives
+ * 3. base.css       - Tailwind integration + dark mode
+ */
+
+@import './primitives.css';
+@import './semantic.css';
+@import './typography.css';
+@import './spacing.css';
+
+/*
+ * Override semantic tokens with HEX for broader compatibility
+ * (Some browsers/tools don't fully support OKLCH)
+ */
+:root {
+  /* Ink & Paper - Japanese calligraphy inspired */
+  --ink-black: #1a1a1a;
+  --ink-dark: #2d2d2d;
+  --ink-medium: #4a4a4a;
+  --ink-light: #6b6b6b;
+
+  --paper-white: #fafafa;
+  --paper-warm: #f5f3f0;
+  --paper-cream: #f0ede8;
+
+  /* Sumi (墨) accent */
+  --sumi: #1a1a1a;
+  --sumi-faded: #3d3d3d;
+
+  /* Vermillion (朱) - traditional Japanese red */
+  --vermillion: #c53d43;
+
+  /* Status colors for compatibility */
+  --green-100: #dcfce7;
+  --green-800: #166534;
+  --yellow-100: #fef9c3;
+  --yellow-800: #854d0e;
+}
+
+/* Dark mode - System preference (fallback when no .light or .dark class) */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --ink-black: #e8e4df;
+    --ink-dark: #d4d0cb;
+    --ink-medium: #a8a4a0;
+    --ink-light: #8a8680;
+
+    --paper-white: #1a1a1a;
+    --paper-warm: #1e1e1c;
+    --paper-cream: #252420;
+
+    --sumi: #e8e4df;
+    --sumi-faded: #c4c0bb;
+    --vermillion: #e05a60;
+
+    --green-100: #1a3a2a;
+    --green-800: #86efac;
+    --yellow-100: #3a3520;
+    --yellow-800: #fde047;
+  }
+}
+
+/* Dark mode - Explicit class (overrides system preference) */
+.dark {
+  --ink-black: #e8e4df;
+  --ink-dark: #d4d0cb;
+  --ink-medium: #a8a4a0;
+  --ink-light: #8a8680;
+
+  --paper-white: #1a1a1a;
+  --paper-warm: #1e1e1c;
+  --paper-cream: #252420;
+
+  --sumi: #e8e4df;
+  --sumi-faded: #c4c0bb;
+  --vermillion: #e05a60;
+
+  --green-100: #1a3a2a;
+  --green-800: #86efac;
+  --yellow-100: #3a3520;
+  --yellow-800: #fde047;
+}
+
+/*
+ * Tailwind CSS v4 Theme Registration
+ * Maps CSS custom properties to Tailwind utility classes
+ */
+@theme {
+  /* Ink & Paper */
+  --color-ink-black: var(--ink-black);
+  --color-ink-dark: var(--ink-dark);
+  --color-ink-medium: var(--ink-medium);
+  --color-ink-light: var(--ink-light);
+
+  --color-paper-white: var(--paper-white);
+  --color-paper-warm: var(--paper-warm);
+  --color-paper-cream: var(--paper-cream);
+
+  /* Accent */
+  --color-sumi: var(--sumi);
+  --color-sumi-faded: var(--sumi-faded);
+  --color-vermillion: var(--vermillion);
+
+  /* Gray scale (from primitives.css via OKLCH fallback) */
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray-950: var(--gray-950);
+
+  /* Primary scale (from semantic.css) */
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+
+  /* Semantic colors */
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-border: var(--color-border);
+
+  /* Status */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-accent: var(--color-accent);
+
+  /* Status (HEX fallback) */
+  --color-green-100: var(--green-100);
+  --color-green-800: var(--green-800);
+  --color-yellow-100: var(--yellow-100);
+  --color-yellow-800: var(--yellow-800);
+
+  /* Typography (from typography.css) */
+  --font-family-sans: var(--font-sans);
+  --font-family-serif: var(--font-serif);
+  --font-family-mono: var(--font-mono);
+
+  --font-size-xs: var(--text-xs);
+  --font-size-sm: var(--text-sm);
+  --font-size-base: var(--text-base);
+  --font-size-lg: var(--text-lg);
+  --font-size-xl: var(--text-xl);
+  --font-size-2xl: var(--text-2xl);
+  --font-size-3xl: var(--text-3xl);
+  --font-size-4xl: var(--text-4xl);
+
+  /* Spacing (from spacing.css) */
+  --spacing-px: var(--spacing-px);
+  --spacing-0: var(--spacing-0);
+  --spacing-1: var(--spacing-1);
+  --spacing-2: var(--spacing-2);
+  --spacing-3: var(--spacing-3);
+  --spacing-4: var(--spacing-4);
+  --spacing-5: var(--spacing-5);
+  --spacing-6: var(--spacing-6);
+  --spacing-8: var(--spacing-8);
+  --spacing-10: var(--spacing-10);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+  --spacing-20: var(--spacing-20);
+  --spacing-24: var(--spacing-24);
+
+  /* Border Radius */
+  --radius-none: var(--radius-none);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  /* Shadows */
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+}

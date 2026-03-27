@@ -11,11 +11,11 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'secondary', 'outline', 'ghost', 'destructive', 'link'],
+      options: ['default', 'secondary', 'outline', 'ghost', 'destructive', 'link', 'inverse'],
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg', 'icon'],
+      options: ['default', 'sm', 'lg', 'icon'],
     },
   },
 }
@@ -64,6 +64,16 @@ export const Link: Story = {
   },
 }
 
+export const Inverse: Story = {
+  args: {
+    variant: 'inverse',
+    children: 'Inverse',
+  },
+  parameters: {
+    backgrounds: { default: 'dark' },
+  },
+}
+
 export const Small: Story = {
   args: {
     size: 'sm',
@@ -102,7 +112,7 @@ export const AllSizes: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Button size="sm">Small</Button>
-      <Button size="md">Medium</Button>
+      <Button size="default">Default</Button>
       <Button size="lg">Large</Button>
     </div>
   ),

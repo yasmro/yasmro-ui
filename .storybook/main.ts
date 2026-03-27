@@ -10,6 +10,12 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+  viteFinal: async (config) => {
+    const tailwindcss = (await import('@tailwindcss/vite')).default
+    config.plugins = config.plugins || []
+    config.plugins.push(tailwindcss())
+    return config
+  },
 }
 
 export default config

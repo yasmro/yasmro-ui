@@ -1,10 +1,10 @@
-import { forwardRef } from 'react'
 import { Slot } from '@radix-ui/react-slot'
-import { buttonVariants, type ButtonVariants } from '../../../variants/button'
+import { forwardRef, type ButtonHTMLAttributes } from 'react'
 import { cn } from '../../../lib/utils'
+import { buttonVariants, type ButtonVariants } from '../../../variants/button'
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     ButtonVariants {
   asChild?: boolean
 }
