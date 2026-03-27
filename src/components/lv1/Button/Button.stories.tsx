@@ -10,7 +10,7 @@ const meta: Meta<typeof Button> = {
   tags: ['autodocs'],
   argTypes: {
     variant: {
-      description: 'ボタンの視覚スタイル',
+      description: 'Visual style of the button.',
       control: 'select',
       options: ['primary', 'secondary', 'outline', 'ghost', 'destructive', 'link', 'inverse'],
       table: {
@@ -19,7 +19,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     size: {
-      description: 'ボタンのサイズ',
+      description: 'Size of the button.',
       control: 'select',
       options: ['sm', 'md', 'lg', 'icon'],
       table: {
@@ -28,7 +28,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     icon: {
-      description: 'Lucide アイコン名（PascalCase）',
+      description: 'Lucide icon name in PascalCase (e.g. "Search", "ArrowRight").',
       control: 'text',
       table: {
         type: { summary: 'IconName' },
@@ -36,7 +36,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     iconPosition: {
-      description: 'アイコンの配置位置',
+      description: 'Position of the icon relative to the label text.',
       control: 'select',
       options: ['start', 'end'],
       table: {
@@ -45,7 +45,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     asChild: {
-      description: '子要素にpropsを委譲する（Radix Slot）',
+      description: 'Delegates props to the child element via Radix Slot.',
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
@@ -53,7 +53,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     disabled: {
-      description: 'ボタンを無効化する',
+      description: 'Disables the button and applies disabled styling.',
       control: 'boolean',
       table: {
         type: { summary: 'boolean' },
@@ -61,7 +61,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     children: {
-      description: 'ボタンのラベルテキスト',
+      description: 'Label text or content inside the button.',
       control: 'text',
       table: {
         type: { summary: 'ReactNode' },
@@ -73,7 +73,8 @@ const meta: Meta<typeof Button> = {
 export default meta
 type Story = StoryObj<typeof Button>
 
-export const Default: Story = {
+export const Playground: Story = {
+  name: 'Playground',
   args: {
     variant: 'primary',
     size: 'md',
@@ -81,104 +82,8 @@ export const Default: Story = {
   },
 }
 
-export const Secondary: Story = {
-  args: {
-    variant: 'secondary',
-    children: 'Secondary',
-  },
-}
-
-export const Outline: Story = {
-  args: {
-    variant: 'outline',
-    children: 'Outline',
-  },
-}
-
-export const Ghost: Story = {
-  args: {
-    variant: 'ghost',
-    children: 'Ghost',
-  },
-}
-
-export const Destructive: Story = {
-  args: {
-    variant: 'destructive',
-    children: 'Delete',
-  },
-}
-
-export const Link: Story = {
-  args: {
-    variant: 'link',
-    children: 'Link Button',
-  },
-}
-
-export const Inverse: Story = {
-  args: {
-    variant: 'inverse',
-    children: 'Inverse',
-  },
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
-}
-
-export const Small: Story = {
-  args: {
-    size: 'sm',
-    children: 'Small',
-  },
-}
-
-export const Large: Story = {
-  args: {
-    size: 'lg',
-    children: 'Large',
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    disabled: true,
-    children: 'Disabled',
-  },
-}
-
-export const WithIconStart: Story = {
-  args: {
-    icon: 'Search',
-    children: '検索',
-  },
-}
-
-export const WithIconEnd: Story = {
-  args: {
-    icon: 'ArrowRight',
-    iconPosition: 'end',
-    children: '次へ',
-  },
-}
-
-export const IconOnly: Story = {
-  args: {
-    icon: 'Plus',
-    size: 'icon',
-    'aria-label': '追加',
-  },
-}
-
-export const DestructiveWithIcon: Story = {
-  args: {
-    variant: 'destructive',
-    icon: 'Trash2',
-    children: '削除',
-  },
-}
-
 export const AllVariants: Story = {
+  name: 'All Variants',
   render: () => (
     <div className="flex flex-wrap gap-4">
       <Button variant="primary">Primary</Button>
@@ -187,28 +92,55 @@ export const AllVariants: Story = {
       <Button variant="ghost">Ghost</Button>
       <Button variant="destructive">Destructive</Button>
       <Button variant="link">Link</Button>
+      <Button variant="inverse">Inverse</Button>
     </div>
   ),
 }
 
-export const AllSizes: Story = {
+export const Sizes: Story = {
+  name: 'Sizes',
   render: () => (
     <div className="flex items-center gap-4">
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
+      <Button icon="Plus" size="icon" aria-label="Add" />
+    </div>
+  ),
+}
+
+export const Icons: Story = {
+  name: 'Icons',
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Button icon="Search">Search</Button>
+      <Button icon="ArrowRight" iconPosition="end">Next</Button>
+      <Button icon="Plus" size="icon" aria-label="Add" />
+      <Button variant="destructive" icon="Trash2">Delete</Button>
     </div>
   ),
 }
 
 export const IconPositions: Story = {
+  name: 'Icon Positions',
   render: () => (
     <div className="flex items-center gap-4">
-      <Button icon="ChevronLeft">戻る</Button>
-      <Button icon="ChevronRight" iconPosition="end">次へ</Button>
-      <Button icon="Plus" size="icon" aria-label="追加" />
-      <Button icon="Download" size="sm">ダウンロード</Button>
-      <Button icon="Send" size="lg" iconPosition="end">送信</Button>
+      <Button icon="ChevronLeft">Back</Button>
+      <Button icon="ChevronRight" iconPosition="end">Next</Button>
+      <Button icon="Download" size="sm">Download</Button>
+      <Button icon="Send" size="lg" iconPosition="end">Send</Button>
+    </div>
+  ),
+}
+
+export const Disabled: Story = {
+  name: 'Disabled',
+  render: () => (
+    <div className="flex flex-wrap gap-4">
+      <Button disabled>Primary</Button>
+      <Button variant="secondary" disabled>Secondary</Button>
+      <Button variant="outline" disabled>Outline</Button>
+      <Button variant="destructive" disabled icon="Trash2">Delete</Button>
     </div>
   ),
 }
