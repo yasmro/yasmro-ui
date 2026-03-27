@@ -37,4 +37,35 @@ describe('Button', () => {
     )
     expect(screen.getByRole('link', { name: 'Link Button' })).toBeInTheDocument()
   })
+
+  it('renders icon at start position by default', () => {
+    render(<Button icon="Search">検索</Button>)
+    const button = screen.getByRole('button')
+    const svg = button.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(svg?.getAttribute('aria-hidden')).toBe('true')
+    expect(button.firstChild).toBe(svg)
+  })
+
+  it('renders icon at end position', () => {
+    render(<Button icon="ArrowRight" iconPosition="end">次へ</Button>)
+    const button = screen.getByRole('button')
+    const svg = button.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(button.lastChild).toBe(svg)
+  })
+
+  it('renders icon-only button', () => {
+    render(<Button icon="Plus" size="icon" aria-label="追加" />)
+    const button = screen.getByRole('button', { name: '追加' })
+    const svg = button.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(button).toHaveClass('w-10')
+  })
+
+  it('renders without icon when icon prop is not provided', () => {
+    render(<Button>No Icon</Button>)
+    const button = screen.getByRole('button')
+    expect(button.querySelector('svg')).not.toBeInTheDocument()
+  })
 })
