@@ -1,5 +1,5 @@
 {
-  "name": "@yasmro/design-system",
+  "name": "@yasmro/ui",
   "version": "0.0.1",
   "packageManager": "pnpm@9.15.0",
   "description": "Design system with CSS variants and React components",
