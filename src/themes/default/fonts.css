@@ -1,0 +1,8 @@
+/*
+ * Default Theme — Brand Fonts
+ * Consumers must load these fonts themselves (e.g. Google Fonts, self-hosted).
+ */
+
+@theme {
+  --font-sans: "Hanken Grotesk", "LINE Seed JP", var(--font-sans-fallback);
+}
