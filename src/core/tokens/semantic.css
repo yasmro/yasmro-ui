@@ -50,7 +50,7 @@
   --color-surface: var(--gray-900);
   --color-surface-elevated: var(--gray-800);
 
-  --color-text: var(--paper-white);
+  --color-text: var(--ink-black);
   --color-text-muted: var(--gray-400);
   --color-text-subtle: var(--gray-500);
 
