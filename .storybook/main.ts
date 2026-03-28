@@ -14,6 +14,11 @@ const config: StorybookConfig = {
     const tailwindcss = (await import('@tailwindcss/vite')).default
     config.plugins = config.plugins || []
     config.plugins.push(tailwindcss())
+
+    if (process.env.GITHUB_ACTIONS) {
+      config.base = '/yasmro-ui/'
+    }
+
     return config
   },
 }
