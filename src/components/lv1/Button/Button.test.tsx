@@ -9,10 +9,10 @@ describe('Button', () => {
   })
 
   it('renders with different variants', () => {
-    const { rerender } = render(<Button variant="outline">Outline</Button>)
+    const { rerender } = render(<Button variant="secondary">Secondary</Button>)
     expect(screen.getByRole('button')).toHaveClass('border')
 
-    rerender(<Button variant="ghost">Ghost</Button>)
+    rerender(<Button variant="tertiary">Tertiary</Button>)
     expect(screen.getByRole('button')).not.toHaveClass('border')
   })
 
@@ -36,5 +36,37 @@ describe('Button', () => {
       </Button>
     )
     expect(screen.getByRole('link', { name: 'Link Button' })).toBeInTheDocument()
+  })
+
+  it('renders icon at start position by default', () => {
+    render(<Button icon="Search">検索</Button>)
+    const button = screen.getByRole('button')
+    const svg = button.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(svg?.getAttribute('aria-hidden')).toBe('true')
+    expect(button.firstChild).toBe(svg)
+  })
+
+  it('renders icon at end position', () => {
+    render(<Button icon="ArrowRight" iconPosition="end">次へ</Button>)
+    const button = screen.getByRole('button')
+    const svg = button.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(button.lastChild).toBe(svg)
+  })
+
+  it('renders icon-only button with square aspect ratio', () => {
+    render(<Button icon="Plus" aria-label="Add" />)
+    const button = screen.getByRole('button', { name: 'Add' })
+    const svg = button.querySelector('svg')
+    expect(svg).toBeInTheDocument()
+    expect(button).toHaveClass('aspect-square')
+    expect(button).toHaveClass('px-0')
+  })
+
+  it('renders without icon when icon prop is not provided', () => {
+    render(<Button>No Icon</Button>)
+    const button = screen.getByRole('button')
+    expect(button.querySelector('svg')).not.toBeInTheDocument()
   })
 })
