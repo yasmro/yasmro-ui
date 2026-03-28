@@ -3,6 +3,7 @@ import { icons } from 'lucide-react'
 import { type ButtonHTMLAttributes, forwardRef } from 'react'
 import { cn } from '../../../lib/utils'
 import { type ButtonVariants, buttonVariants } from '../../../variants/button'
+import { Spinner } from '../Spinner'
 
 export type IconName = keyof typeof icons
 
@@ -10,11 +11,23 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Bu
   asChild?: boolean
   icon?: IconName
   iconPosition?: 'start' | 'end'
+  isLoading?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, icon, iconPosition = 'start', children, ...props },
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      icon,
+      iconPosition = 'start',
+      isLoading = false,
+      disabled,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const Comp = asChild ? Slot : 'button'
@@ -36,11 +49,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           isIconOnly && 'aspect-square px-0',
         )}
         ref={ref}
+        disabled={disabled || isLoading}
         {...props}
       >
-        {IconComponent && iconPosition === 'start' && <IconComponent aria-hidden="true" />}
-        {children}
-        {IconComponent && iconPosition === 'end' && <IconComponent aria-hidden="true" />}
+        {isLoading ? (
+          <>
+            <Spinner size="sm" className="size-[1em]" label="Loading" />
+            {children}
+          </>
+        ) : (
+          <>
+            {IconComponent && iconPosition === 'start' && <IconComponent aria-hidden="true" />}
+            {children}
+            {IconComponent && iconPosition === 'end' && <IconComponent aria-hidden="true" />}
+          </>
+        )}
       </Comp>
     )
   },

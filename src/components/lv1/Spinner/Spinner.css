@@ -1,0 +1,43 @@
+@keyframes yasmro-dot-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes yasmro-ripple-wave {
+  0% {
+    transform: scale(0.45);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+.yasmro-spinner-dot {
+  animation: yasmro-dot-breathe 2.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.yasmro-spinner-ripple {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.yasmro-spinner-ripple-1 {
+  animation: yasmro-ripple-wave 2.8s ease-out infinite;
+}
+
+.yasmro-spinner-ripple-2 {
+  animation: yasmro-ripple-wave 2.8s ease-out infinite 1.1s;
+}
