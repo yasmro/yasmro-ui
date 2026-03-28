@@ -43,8 +43,10 @@ jobs:
             const testResultsDir = 'test-results';
             const failed = [];
             if (fs.existsSync(testResultsDir)) {
-              for (const dir of fs.readdirSync(testResultsDir)) {
-                const diffFile = fs.readdirSync(path.join(testResultsDir, dir))
+              for (const entry of fs.readdirSync(testResultsDir)) {
+                const entryPath = path.join(testResultsDir, entry);
+                if (!fs.statSync(entryPath).isDirectory()) continue;
+                const diffFile = fs.readdirSync(entryPath)
                   .find(f => f.endsWith('-diff.png'));
                 if (diffFile) {
                   failed.push(diffFile.replace('-diff.png', ''));
