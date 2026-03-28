@@ -21,9 +21,9 @@ const meta: Meta<typeof Button> = {
     size: {
       description: 'Size of the button.',
       control: 'select',
-      options: ['sm', 'md', 'lg', 'icon'],
+      options: ['sm', 'md', 'lg'],
       table: {
-        type: { summary: '"sm" | "md" | "lg" | "icon"' },
+        type: { summary: '"sm" | "md" | "lg"' },
         defaultValue: { summary: 'md' },
       },
     },
@@ -104,7 +104,7 @@ export const Sizes: Story = {
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
-      <Button icon="Plus" size="icon" aria-label="Add" />
+      <Button icon="Plus" aria-label="Add" />
     </div>
   ),
 }
@@ -115,7 +115,7 @@ export const Icons: Story = {
     <div className="flex items-center gap-4">
       <Button icon="Search">Search</Button>
       <Button icon="ArrowRight" iconPosition="end">Next</Button>
-      <Button icon="Plus" size="icon" aria-label="Add" />
+      <Button icon="Plus" aria-label="Add" />
       <Button variant="destructive" icon="Trash2">Delete</Button>
     </div>
   ),

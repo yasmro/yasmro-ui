@@ -55,12 +55,13 @@ describe('Button', () => {
     expect(button.lastChild).toBe(svg)
   })
 
-  it('renders icon-only button', () => {
-    render(<Button icon="Plus" size="icon" aria-label="追加" />)
-    const button = screen.getByRole('button', { name: '追加' })
+  it('renders icon-only button with square aspect ratio', () => {
+    render(<Button icon="Plus" aria-label="Add" />)
+    const button = screen.getByRole('button', { name: 'Add' })
     const svg = button.querySelector('svg')
     expect(svg).toBeInTheDocument()
-    expect(button).toHaveClass('w-10')
+    expect(button).toHaveClass('aspect-square')
+    expect(button).toHaveClass('px-0')
   })
 
   it('renders without icon when icon prop is not provided', () => {

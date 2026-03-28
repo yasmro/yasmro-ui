@@ -1,9 +1,11 @@
 # CLAUDE.md — yasmro-ui
 
-Design system component library built with React, CVA, Radix UI, and Tailwind CSS.
+Design system component library based on [shadcn/ui](https://ui.shadcn.com/), customized for the yasmro brand.
+When adding or modifying components, follow shadcn/ui conventions (Radix UI + CVA + cn utility) as the baseline.
 
 ## Tech Stack
 
+- **Base**: shadcn/ui
 - **Framework**: React + TypeScript
 - **Styling**: Tailwind CSS + class-variance-authority (CVA)
 - **Primitives**: Radix UI

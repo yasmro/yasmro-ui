@@ -21,6 +21,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : 'button'
     const IconComponent = icon ? icons[icon] : null
+    const isIconOnly = !children && !!icon
 
     if (asChild) {
       return (
@@ -36,7 +37,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size, className }), isIconOnly && 'aspect-square px-0')}
         ref={ref}
         {...props}
       >
