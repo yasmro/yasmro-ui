@@ -56,6 +56,8 @@
     "build:storybook": "storybook build",
     "test": "vitest",
     "test:ui": "vitest --ui",
+    "test:vrt": "playwright test",
+    "test:vrt:update": "playwright test --update-snapshots",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm build"
@@ -73,6 +75,7 @@
     }
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
     "@radix-ui/react-dialog": "^1.1.4",
     "@storybook/addon-essentials": "^8.4.7",
     "@storybook/react": "^8.4.7",
@@ -80,6 +83,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.1.0",
+    "@types/node": "^25.5.0",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "jsdom": "24",

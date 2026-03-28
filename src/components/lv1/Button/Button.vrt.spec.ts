@@ -1,0 +1,31 @@
+import { test, expect } from '@playwright/test'
+
+const STORY_ID_PREFIX = 'components-lv1-button'
+
+const stories = [
+  'all-variants',
+  'sizes',
+  'icons',
+  'icon-positions',
+  'disabled',
+] as const
+
+const themes = ['light', 'dark'] as const
+
+function storyUrl(storyId: string, theme: string) {
+  return `/iframe.html?id=${STORY_ID_PREFIX}--${storyId}&globals=theme:${theme}&viewMode=story`
+}
+
+for (const story of stories) {
+  for (const theme of themes) {
+    test(`Button / ${story} / ${theme}`, async ({ page }) => {
+      await page.goto(storyUrl(story, theme))
+      await page.waitForSelector('[data-storyloaded]', { timeout: 5_000 }).catch(() => {})
+      // Wait for fonts and rendering to settle
+      await page.waitForLoadState('networkidle')
+
+      const root = page.locator('#storybook-root')
+      await expect(root).toHaveScreenshot(`${story}-${theme}.png`)
+    })
+  }
+}

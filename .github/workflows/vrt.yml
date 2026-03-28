@@ -1,0 +1,112 @@
+name: VRT
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  vrt:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm exec playwright install chromium
+
+      - run: pnpm test:vrt
+        id: vrt
+
+      - uses: actions/upload-artifact@v4
+        if: failure() && steps.vrt.outcome == 'failure'
+        id: artifact
+        with:
+          name: vrt-diff
+          path: test-results/
+          retention-days: 7
+
+      - uses: actions/github-script@v7
+        if: failure() && steps.vrt.outcome == 'failure'
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            // Collect failed test names from test-results directory
+            const testResultsDir = 'test-results';
+            const failed = [];
+            if (fs.existsSync(testResultsDir)) {
+              for (const dir of fs.readdirSync(testResultsDir)) {
+                const diffFile = fs.readdirSync(path.join(testResultsDir, dir))
+                  .find(f => f.endsWith('-diff.png'));
+                if (diffFile) {
+                  failed.push(diffFile.replace('-diff.png', ''));
+                }
+              }
+            }
+
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const list = failed.length > 0
+              ? failed.map(f => `- \`${f}\``).join('\n')
+              : '- (see artifacts for details)';
+
+            const body = [
+              '## 🔴 VRT Failed',
+              '',
+              '### Diffs detected',
+              list,
+              '',
+              `📦 [Download diff images](${runUrl}#artifacts)`,
+              '',
+              '*Artifacts contain actual / expected / diff PNGs for each failure.*',
+              '',
+              'If these changes are intentional, run:',
+              '```bash',
+              'pnpm test:vrt:update',
+              '```',
+            ].join('\n');
+
+            // Update or create comment
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body?.includes('## 🔴 VRT Failed'));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                ...context.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - uses: actions/github-script@v7
+        if: success()
+        with:
+          script: |
+            // Remove previous failure comment if VRT now passes
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body?.includes('## 🔴 VRT Failed'));
+            if (existing) {
+              await github.rest.issues.deleteComment({
+                ...context.repo,
+                comment_id: existing.id,
+              });
+            }
