@@ -9,7 +9,7 @@
  * - Consuming tokens in plain CSS
  * - SSR environments that need raw CSS variables
  */
-@import './primitives.css';
-@import './semantic.css';
-@import './typography.css';
-@import './spacing.css';
+@import "./primitives.css";
+@import "./semantic.css";
+@import "./typography.css";
+@import "./spacing.css";

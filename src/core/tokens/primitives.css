@@ -30,7 +30,7 @@
   --vermillion-500: oklch(0.64 0.16 25);
   --vermillion-600: oklch(0.56 0.14 25);
   --vermillion-700: oklch(0.46 0.12 25);
-  --vermillion-800: oklch(0.36 0.10 25);
+  --vermillion-800: oklch(0.36 0.1 25);
   --vermillion-900: oklch(0.27 0.08 25);
 
   /* Blue scale (default primary) */
@@ -38,8 +38,8 @@
   --blue-200: oklch(0.91 0.04 250);
   --blue-300: oklch(0.83 0.07 250);
   --blue-400: oklch(0.74 0.09 250);
-  --blue-500: oklch(0.64 0.10 250);
-  --blue-600: oklch(0.56 0.10 250);
+  --blue-500: oklch(0.64 0.1 250);
+  --blue-600: oklch(0.56 0.1 250);
   --blue-700: oklch(0.46 0.09 250);
   --blue-800: oklch(0.36 0.08 250);
   --blue-900: oklch(0.27 0.06 250);
