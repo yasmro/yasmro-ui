@@ -10,10 +10,10 @@
  * 3. base.css       - Tailwind integration + dark mode
  */
 
-@import './primitives.css';
-@import './semantic.css';
-@import './typography.css';
-@import './spacing.css';
+@import "./primitives.css";
+@import "./semantic.css";
+@import "./typography.css";
+@import "./spacing.css";
 
 /*
  * Override semantic tokens with HEX for broader compatibility

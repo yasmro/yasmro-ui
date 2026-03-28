@@ -11,7 +11,11 @@ When adding or modifying components, follow shadcn/ui conventions (Radix UI + CV
 - **Primitives**: Radix UI
 - **Storybook**: Component documentation & visual testing
 - **Build**: tsup
+- **Lint / Format**: Biome
 - **Test**: Vitest
+- **VRT**: Playwright
+- **Git Hooks**: lefthook
+- **Release**: Changesets
 - **Package Manager**: pnpm
 
 ## Project Structure

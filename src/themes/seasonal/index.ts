@@ -29,7 +29,7 @@ function isDateInPeriod(
   month: number,
   day: number,
   start: { month: number; day: number },
-  end: { month: number; day: number }
+  end: { month: number; day: number },
 ): boolean {
   const dateValue = month * 100 + day
   const startValue = start.month * 100 + start.day

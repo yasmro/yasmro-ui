@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 import { Button } from './Button'
 
 describe('Button', () => {
@@ -33,7 +33,7 @@ describe('Button', () => {
     render(
       <Button asChild>
         <a href="/test">Link Button</a>
-      </Button>
+      </Button>,
     )
     expect(screen.getByRole('link', { name: 'Link Button' })).toBeInTheDocument()
   })
@@ -48,7 +48,11 @@ describe('Button', () => {
   })
 
   it('renders icon at end position', () => {
-    render(<Button icon="ArrowRight" iconPosition="end">次へ</Button>)
+    render(
+      <Button icon="ArrowRight" iconPosition="end">
+        次へ
+      </Button>,
+    )
     const button = screen.getByRole('button')
     const svg = button.querySelector('svg')
     expect(svg).toBeInTheDocument()

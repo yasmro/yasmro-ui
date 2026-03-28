@@ -9,8 +9,7 @@ export const buttonVariants = cva(
           'bg-ink-black text-paper-white not-disabled:hover:bg-ink-dark not-disabled:hover:text-paper-white',
         secondary:
           'border border-ink-black bg-transparent text-ink-black not-disabled:hover:bg-paper-cream',
-        tertiary:
-          'text-ink-black not-disabled:hover:bg-paper-cream',
+        tertiary: 'text-ink-black not-disabled:hover:bg-paper-cream',
         destructive: 'bg-vermillion text-paper-white not-disabled:hover:opacity-90',
         link: 'text-ink-black underline-offset-4 not-disabled:hover:underline !h-auto !px-0 !py-0 focus-visible:ring-offset-0',
       },

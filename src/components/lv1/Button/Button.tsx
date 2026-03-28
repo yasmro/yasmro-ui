@@ -1,14 +1,12 @@
 import { Slot } from '@radix-ui/react-slot'
 import { icons } from 'lucide-react'
-import { forwardRef, type ButtonHTMLAttributes } from 'react'
+import { type ButtonHTMLAttributes, forwardRef } from 'react'
 import { cn } from '../../../lib/utils'
-import { buttonVariants, type ButtonVariants } from '../../../variants/button'
+import { type ButtonVariants, buttonVariants } from '../../../variants/button'
 
 export type IconName = keyof typeof icons
 
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonVariants {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
   asChild?: boolean
   icon?: IconName
   iconPosition?: 'start' | 'end'
@@ -17,7 +15,7 @@ export interface ButtonProps
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { className, variant, size, asChild = false, icon, iconPosition = 'start', children, ...props },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : 'button'
     const IconComponent = icon ? icons[icon] : null
@@ -25,11 +23,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     if (asChild) {
       return (
-        <Comp
-          className={cn(buttonVariants({ variant, size, className }))}
-          ref={ref}
-          {...props}
-        >
+        <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
           {children}
         </Comp>
       )
@@ -37,7 +31,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }), isIconOnly && 'aspect-square px-0')}
+        className={cn(
+          buttonVariants({ variant, size, className }),
+          isIconOnly && 'aspect-square px-0',
+        )}
         ref={ref}
         {...props}
       >
@@ -46,7 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {IconComponent && iconPosition === 'end' && <IconComponent aria-hidden="true" />}
       </Comp>
     )
-  }
+  },
 )
 
 Button.displayName = 'Button'

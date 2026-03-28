@@ -112,9 +112,13 @@ export const Icons: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Button icon="Search">Search</Button>
-      <Button icon="ArrowRight" iconPosition="end">Next</Button>
+      <Button icon="ArrowRight" iconPosition="end">
+        Next
+      </Button>
       <Button icon="Plus" aria-label="Add" />
-      <Button variant="destructive" icon="Trash2">Delete</Button>
+      <Button variant="destructive" icon="Trash2">
+        Delete
+      </Button>
     </div>
   ),
 }
@@ -124,9 +128,15 @@ export const IconPositions: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Button icon="ChevronLeft">Back</Button>
-      <Button icon="ChevronRight" iconPosition="end">Next</Button>
-      <Button icon="Download" size="sm">Download</Button>
-      <Button icon="Send" size="lg" iconPosition="end">Send</Button>
+      <Button icon="ChevronRight" iconPosition="end">
+        Next
+      </Button>
+      <Button icon="Download" size="sm">
+        Download
+      </Button>
+      <Button icon="Send" size="lg" iconPosition="end">
+        Send
+      </Button>
     </div>
   ),
 }
@@ -136,9 +146,15 @@ export const Disabled: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
       <Button disabled>Primary</Button>
-      <Button variant="secondary" disabled>Secondary</Button>
-      <Button variant="tertiary" disabled>Tertiary</Button>
-      <Button variant="destructive" disabled icon="Trash2">Delete</Button>
+      <Button variant="secondary" disabled>
+        Secondary
+      </Button>
+      <Button variant="tertiary" disabled>
+        Tertiary
+      </Button>
+      <Button variant="destructive" disabled icon="Trash2">
+        Delete
+      </Button>
     </div>
   ),
 }
