@@ -85,9 +85,7 @@
     "@changesets/cli": "^2.30.0",
     "@playwright/test": "^1.58.2",
     "@radix-ui/react-dialog": "^1.1.4",
-    "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/react": "^8.4.7",
-    "@storybook/react-vite": "^8.4.7",
+    "@storybook/react-vite": "10.3.3",
     "@tailwindcss/vite": "^4.2.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.1.0",
@@ -99,11 +97,12 @@
     "lightningcss": "^1.28.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "storybook": "^8.4.7",
+    "storybook": "10.3.3",
     "tailwindcss": "^4.2.2",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "@storybook/addon-docs": "10.3.3"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
