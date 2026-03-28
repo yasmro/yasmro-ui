@@ -6,17 +6,13 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-ink-black text-paper-white hover:bg-ink-dark hover:text-paper-white',
-        destructive: 'bg-vermillion text-paper-white hover:opacity-90',
-        outline:
-          'border border-ink-black bg-transparent text-ink-black hover:bg-ink-black hover:text-paper-white',
+          'bg-ink-black text-paper-white not-disabled:hover:bg-ink-dark not-disabled:hover:text-paper-white',
         secondary:
-          'bg-paper-cream text-ink-black hover:bg-paper-warm',
-        ghost:
-          'text-ink-black hover:bg-paper-cream',
-        link: 'text-ink-black underline-offset-4 hover:underline !h-auto !px-0 !py-0 focus-visible:ring-offset-0',
-        inverse:
-          'bg-paper-white text-ink-black hover:bg-paper-cream',
+          'border border-ink-black bg-transparent text-ink-black not-disabled:hover:bg-paper-cream',
+        tertiary:
+          'text-ink-black not-disabled:hover:bg-paper-cream',
+        destructive: 'bg-vermillion text-paper-white not-disabled:hover:opacity-90',
+        link: 'text-ink-black underline-offset-4 not-disabled:hover:underline !h-auto !px-0 !py-0 focus-visible:ring-offset-0',
       },
       size: {
         md: 'h-10 px-5 py-2 text-sm [&_svg]:size-4',

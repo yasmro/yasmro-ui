@@ -12,9 +12,9 @@ const meta: Meta<typeof Button> = {
     variant: {
       description: 'Visual style of the button.',
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'ghost', 'destructive', 'link', 'inverse'],
+      options: ['primary', 'secondary', 'tertiary', 'destructive', 'link'],
       table: {
-        type: { summary: '"primary" | "secondary" | "outline" | "ghost" | "destructive" | "link" | "inverse"' },
+        type: { summary: '"primary" | "secondary" | "tertiary" | "destructive" | "link"' },
         defaultValue: { summary: 'primary' },
       },
     },
@@ -88,11 +88,9 @@ export const AllVariants: Story = {
     <div className="flex flex-wrap gap-4">
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
+      <Button variant="tertiary">Tertiary</Button>
       <Button variant="destructive">Destructive</Button>
       <Button variant="link">Link</Button>
-      <Button variant="inverse">Inverse</Button>
     </div>
   ),
 }
@@ -139,7 +137,7 @@ export const Disabled: Story = {
     <div className="flex flex-wrap gap-4">
       <Button disabled>Primary</Button>
       <Button variant="secondary" disabled>Secondary</Button>
-      <Button variant="outline" disabled>Outline</Button>
+      <Button variant="tertiary" disabled>Tertiary</Button>
       <Button variant="destructive" disabled icon="Trash2">Delete</Button>
     </div>
   ),

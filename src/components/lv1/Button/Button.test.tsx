@@ -9,10 +9,10 @@ describe('Button', () => {
   })
 
   it('renders with different variants', () => {
-    const { rerender } = render(<Button variant="outline">Outline</Button>)
+    const { rerender } = render(<Button variant="secondary">Secondary</Button>)
     expect(screen.getByRole('button')).toHaveClass('border')
 
-    rerender(<Button variant="ghost">Ghost</Button>)
+    rerender(<Button variant="tertiary">Tertiary</Button>)
     expect(screen.getByRole('button')).not.toHaveClass('border')
   })
 

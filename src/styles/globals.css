@@ -7,13 +7,12 @@
 
 /* Base styles */
 body {
-  background-color: var(--paper-warm);
+  background-color: #fff;
   color: var(--ink-black);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Storybook preview container */
-.docs-story,
-.sb-show-main {
-  background-color: var(--paper-warm) !important;
+body.dark {
+  background-color: var(--ink-black);
+  color: var(--paper-white);
 }
