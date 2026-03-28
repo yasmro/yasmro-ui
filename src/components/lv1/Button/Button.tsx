@@ -47,23 +47,31 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           buttonVariants({ variant, size, className }),
           isIconOnly && 'aspect-square px-0',
+          'relative',
         )}
         ref={ref}
         disabled={disabled || isLoading}
         {...props}
       >
-        {isLoading ? (
-          <>
-            <Spinner size="sm" className="size-[1em]" label="Loading" />
-            {children}
-          </>
-        ) : (
-          <>
-            {IconComponent && iconPosition === 'start' && <IconComponent aria-hidden="true" />}
-            {children}
-            {IconComponent && iconPosition === 'end' && <IconComponent aria-hidden="true" />}
-          </>
-        )}
+        <span
+          className={cn(
+            'absolute inset-0 flex items-center justify-center transition-opacity duration-300',
+            isLoading ? 'opacity-100' : 'opacity-0',
+          )}
+          aria-hidden={!isLoading}
+        >
+          <Spinner size="sm" className="size-[1em]" label="Loading" />
+        </span>
+        <span
+          className={cn(
+            'inline-flex items-center gap-2 transition-opacity duration-300',
+            isLoading ? 'opacity-0' : 'opacity-100',
+          )}
+        >
+          {IconComponent && iconPosition === 'start' && <IconComponent aria-hidden="true" />}
+          {children}
+          {IconComponent && iconPosition === 'end' && <IconComponent aria-hidden="true" />}
+        </span>
       </Comp>
     )
   },
