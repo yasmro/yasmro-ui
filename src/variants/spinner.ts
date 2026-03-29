@@ -7,14 +7,9 @@ export const spinnerVariants = cva('inline-flex items-center justify-center', {
       md: 'size-6',
       lg: 'size-8',
     },
-    type: {
-      default: '',
-      ripple: '',
-    },
   },
   defaultVariants: {
     size: 'md',
-    type: 'default',
   },
 })
 

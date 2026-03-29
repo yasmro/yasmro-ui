@@ -3,9 +3,7 @@ import { cn } from '../../../lib/utils'
 import { type SpinnerVariants, spinnerVariants } from '../../../variants/spinner'
 import './Spinner.css'
 
-export interface SpinnerProps
-  extends HTMLAttributes<HTMLDivElement>,
-    Omit<SpinnerVariants, 'type'> {
+export interface SpinnerProps extends HTMLAttributes<HTMLDivElement>, SpinnerVariants {
   /** Accessible label for screen readers. */
   label?: string
   /** Spinner animation type. */

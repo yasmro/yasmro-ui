@@ -8,9 +8,11 @@ import { Spinner } from '../Spinner'
 export type IconName = keyof typeof icons
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
+  /** Render as child element using Radix Slot. Note: `isLoading` is ignored when `asChild` is true. */
   asChild?: boolean
   icon?: IconName
   iconPosition?: 'start' | 'end'
+  /** Shows a loading spinner and disables the button. Ignored when `asChild` is true. */
   isLoading?: boolean
 }
 
@@ -35,6 +37,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const isIconOnly = !children && !!icon
 
     if (asChild) {
+      if (process.env.NODE_ENV !== 'production' && isLoading) {
+        console.warn('Button: `isLoading` prop is ignored when `asChild` is true.')
+      }
       return (
         <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
           {children}
