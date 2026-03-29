@@ -3,18 +3,33 @@ import { icons } from 'lucide-react'
 import { type ButtonHTMLAttributes, forwardRef } from 'react'
 import { cn } from '../../../lib/utils'
 import { type ButtonVariants, buttonVariants } from '../../../variants/button'
+import { Spinner } from '../Spinner'
 
 export type IconName = keyof typeof icons
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
+  /** Render as child element using Radix Slot. Note: `isLoading` is ignored when `asChild` is true. */
   asChild?: boolean
   icon?: IconName
   iconPosition?: 'start' | 'end'
+  /** Shows a loading spinner and disables the button. Ignored when `asChild` is true. */
+  isLoading?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, asChild = false, icon, iconPosition = 'start', children, ...props },
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      icon,
+      iconPosition = 'start',
+      isLoading = false,
+      disabled,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const Comp = asChild ? Slot : 'button'
@@ -22,6 +37,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const isIconOnly = !children && !!icon
 
     if (asChild) {
+      if (process.env.NODE_ENV !== 'production' && isLoading) {
+        console.warn('Button: `isLoading` prop is ignored when `asChild` is true.')
+      }
       return (
         <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
           {children}
@@ -34,13 +52,31 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           buttonVariants({ variant, size, className }),
           isIconOnly && 'aspect-square px-0',
+          'relative',
         )}
         ref={ref}
+        disabled={disabled || isLoading}
         {...props}
       >
-        {IconComponent && iconPosition === 'start' && <IconComponent aria-hidden="true" />}
-        {children}
-        {IconComponent && iconPosition === 'end' && <IconComponent aria-hidden="true" />}
+        <span
+          className={cn(
+            'absolute inset-0 flex items-center justify-center transition-opacity duration-300',
+            isLoading ? 'opacity-100' : 'opacity-0',
+          )}
+          aria-hidden={!isLoading}
+        >
+          <Spinner size="sm" className="size-[1em]" label="Loading" />
+        </span>
+        <span
+          className={cn(
+            'inline-flex items-center gap-2 transition-opacity duration-300',
+            isLoading ? 'opacity-0' : 'opacity-100',
+          )}
+        >
+          {IconComponent && iconPosition === 'start' && <IconComponent aria-hidden="true" />}
+          {children}
+          {IconComponent && iconPosition === 'end' && <IconComponent aria-hidden="true" />}
+        </span>
       </Comp>
     )
   },

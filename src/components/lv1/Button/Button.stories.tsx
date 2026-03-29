@@ -52,6 +52,14 @@ const meta: Meta<typeof Button> = {
         defaultValue: { summary: 'false' },
       },
     },
+    isLoading: {
+      description: 'Shows a loading spinner and disables the button.',
+      control: 'boolean',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     disabled: {
       description: 'Disables the button and applies disabled styling.',
       control: 'boolean',
@@ -136,6 +144,24 @@ export const IconPositions: Story = {
       </Button>
       <Button icon="Send" size="lg" iconPosition="end">
         Send
+      </Button>
+    </div>
+  ),
+}
+
+export const Loading: Story = {
+  name: 'Loading',
+  render: () => (
+    <div className="flex flex-wrap gap-4">
+      <Button isLoading>Primary</Button>
+      <Button variant="secondary" isLoading>
+        Secondary
+      </Button>
+      <Button variant="tertiary" isLoading>
+        Tertiary
+      </Button>
+      <Button variant="destructive" isLoading>
+        Destructive
       </Button>
     </div>
   ),

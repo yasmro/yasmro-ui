@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test'
 
-const STORY_ID_PREFIX = 'components-lv1-button'
+const STORY_ID_PREFIX = 'components-lv1-spinner'
 
-const stories = ['all-variants', 'sizes', 'icons', 'icon-positions', 'loading', 'disabled'] as const
+const stories = ['all-types', 'sizes', 'on-dark-background'] as const
 
 const themes = ['light', 'dark'] as const
 
@@ -12,11 +12,21 @@ function storyUrl(storyId: string, theme: string) {
 
 for (const story of stories) {
   for (const theme of themes) {
-    test(`Button / ${story} / ${theme}`, async ({ page }) => {
+    test(`Spinner / ${story} / ${theme}`, async ({ page }) => {
       await page.goto(storyUrl(story, theme))
       await page.waitForSelector('[data-storyloaded]', { timeout: 5_000 }).catch(() => {})
       // Wait for fonts and rendering to settle
       await page.waitForLoadState('networkidle')
+
+      // Pause animations for consistent screenshots
+      await page.addStyleTag({
+        content: `
+          *, *::before, *::after {
+            animation-play-state: paused !important;
+            animation-delay: -0.0001s !important;
+          }
+        `,
+      })
 
       const root = page.locator('#storybook-root')
       await expect(root).toHaveScreenshot(`${story}-${theme}.png`)
