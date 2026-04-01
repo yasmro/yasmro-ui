@@ -1,16 +1,16 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
 export const buttonVariants = cva(
-  'btn inline-flex items-center justify-center gap-2 whitespace-nowrap leading-none font-medium hover:cursor-pointer no-underline transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-black focus-visible:ring-offset-2 focus-visible:ring-offset-paper-warm disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+  'btn inline-flex items-center justify-center gap-2 whitespace-nowrap leading-none font-medium hover:cursor-pointer no-underline transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-ring-offset disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        primary:
-          'bg-ink-dark text-paper-warm not-disabled:hover:bg-ink-black not-disabled:hover:text-paper-white',
+        primary: 'bg-solid text-solid-foreground not-disabled:hover:bg-solid-hover',
         secondary:
-          'border border-ink-black bg-transparent text-ink-black not-disabled:hover:bg-paper-cream',
-        tertiary: 'text-ink-black not-disabled:hover:bg-paper-cream',
-        destructive: 'bg-vermillion text-paper-white not-disabled:hover:bg-vermillion-hover',
+          'border border-border-strong bg-transparent text-foreground not-disabled:hover:bg-surface-hover',
+        tertiary: 'text-foreground not-disabled:hover:bg-surface-hover',
+        destructive:
+          'bg-destructive text-destructive-foreground not-disabled:hover:bg-destructive-hover',
         link: '',
       },
       size: {

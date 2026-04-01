@@ -5,9 +5,9 @@
  * with Tailwind CSS v4 via @theme blocks.
  *
  * Token Hierarchy:
- * 1. primitives.css - Raw color values in OKLCH
- * 2. semantic.css   - Meaningful names referencing primitives
- * 3. base.css       - Tailwind integration + dark mode
+ * 1. primitives.css - Raw color values in OKLCH (fixed, never change between modes)
+ * 2. semantic.css   - Meaningful names referencing primitives (dark mode handled here)
+ * 3. base.css       - Tailwind integration
  */
 
 @import "./primitives.css";
@@ -16,110 +16,59 @@
 @import "./spacing.css";
 
 /*
- * Override semantic tokens with HEX for broader compatibility
- * (Some browsers/tools don't fully support OKLCH)
- */
-:root {
-  /* Ink & Paper - Japanese calligraphy inspired */
-  --ink-black: #1a1a1a;
-  --ink-dark: #2d2d2d;
-  --ink-medium: #4a4a4a;
-  --ink-light: #6b6b6b;
-
-  --paper-white: #fafafa;
-  --paper-warm: #f5f3f0;
-  --paper-cream: #f0ede8;
-
-  /* Sumi (墨) accent */
-  --sumi: #1a1a1a;
-  --sumi-faded: #3d3d3d;
-
-  /* Vermillion (朱) - traditional Japanese red */
-  --vermillion: #c53d43;
-  --vermillion-hover: #a8333a;
-
-  /* Status colors for compatibility */
-  --green-100: #dcfce7;
-  --green-800: #166534;
-  --yellow-100: #fef9c3;
-  --yellow-800: #854d0e;
-}
-
-/* Dark mode - System preference (fallback when no .light or .dark class) */
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --ink-black: #e8e4df;
-    --ink-dark: #d4d0cb;
-    --ink-medium: #a8a4a0;
-    --ink-light: #8a8680;
-
-    --paper-white: #1a1a1a;
-    --paper-warm: #1e1e1c;
-    --paper-cream: #252420;
-
-    --sumi: #e8e4df;
-    --sumi-faded: #c4c0bb;
-    --vermillion: #e05a60;
-    --vermillion-hover: #f07078;
-
-    --green-100: #1a3a2a;
-    --green-800: #86efac;
-    --yellow-100: #3a3520;
-    --yellow-800: #fde047;
-  }
-}
-
-/* Dark mode - Explicit class (overrides system preference) */
-.dark {
-  --ink-black: #e8e4df;
-  --ink-dark: #d4d0cb;
-  --ink-medium: #a8a4a0;
-  --ink-light: #8a8680;
-
-  --paper-white: #1a1a1a;
-  --paper-warm: #1e1e1c;
-  --paper-cream: #252420;
-
-  --sumi: #e8e4df;
-  --sumi-faded: #c4c0bb;
-  --vermillion: #e05a60;
-  --vermillion-hover: #f07078;
-
-  --green-100: #1a3a2a;
-  --green-800: #86efac;
-  --yellow-100: #3a3520;
-  --yellow-800: #fde047;
-}
-
-/*
  * Tailwind CSS v4 Theme Registration
  * Maps CSS custom properties to Tailwind utility classes
  */
 @theme {
-  /* Ink & Paper */
-  --color-ink-black: var(--ink-black);
-  --color-ink-dark: var(--ink-dark);
-  --color-ink-medium: var(--ink-medium);
-  --color-ink-light: var(--ink-light);
+  /* ===== Semantic Colors (use these in components) ===== */
 
-  --color-paper-white: var(--paper-white);
-  --color-paper-warm: var(--paper-warm);
-  --color-paper-cream: var(--paper-cream);
+  /* Surfaces */
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-hover: var(--color-surface-hover);
+
+  /* Foreground */
+  --color-foreground: var(--color-foreground);
+  --color-foreground-muted: var(--color-foreground-muted);
+  --color-foreground-subtle: var(--color-foreground-subtle);
+
+  /* Solid (filled components) */
+  --color-solid: var(--color-solid);
+  --color-solid-hover: var(--color-solid-hover);
+  --color-solid-foreground: var(--color-solid-foreground);
+
+  /* Destructive */
+  --color-destructive: var(--color-destructive);
+  --color-destructive-hover: var(--color-destructive-hover);
+  --color-destructive-foreground: var(--color-destructive-foreground);
 
   /* Accent */
-  --color-sumi: var(--sumi);
-  --color-sumi-faded: var(--sumi-faded);
-  --color-vermillion: var(--vermillion);
-  --color-vermillion-hover: var(--vermillion-hover);
-  --color-vermillion-100: var(--vermillion-100);
-  --color-vermillion-200: var(--vermillion-200);
-  --color-vermillion-300: var(--vermillion-300);
-  --color-vermillion-400: var(--vermillion-400);
-  --color-vermillion-500: var(--vermillion-500);
-  --color-vermillion-600: var(--vermillion-600);
-  --color-vermillion-700: var(--vermillion-700);
-  --color-vermillion-800: var(--vermillion-800);
-  --color-vermillion-900: var(--vermillion-900);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+
+  /* Border */
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  /* Focus ring */
+  --color-ring: var(--color-ring);
+  --color-ring-offset: var(--color-ring-offset);
+
+  /* Inverse */
+  --color-inverse-foreground: var(--color-inverse-foreground);
+
+  /* Status */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+
+  /* Status (HEX fallback) */
+  --color-green-100: var(--green-100);
+  --color-green-800: var(--green-800);
+  --color-yellow-100: var(--yellow-100);
+  --color-yellow-800: var(--yellow-800);
+
+  /* ===== Primitive Scales (for theme authoring & docs) ===== */
 
   /* Sumi scale */
   --color-sumi-50: var(--sumi-50);
@@ -133,7 +82,18 @@
   --color-sumi-800: var(--sumi-800);
   --color-sumi-900: var(--sumi-900);
 
-  /* Gray scale (from primitives.css via OKLCH fallback) */
+  /* Vermillion scale */
+  --color-vermillion-100: var(--vermillion-100);
+  --color-vermillion-200: var(--vermillion-200);
+  --color-vermillion-300: var(--vermillion-300);
+  --color-vermillion-400: var(--vermillion-400);
+  --color-vermillion-500: var(--vermillion-500);
+  --color-vermillion-600: var(--vermillion-600);
+  --color-vermillion-700: var(--vermillion-700);
+  --color-vermillion-800: var(--vermillion-800);
+  --color-vermillion-900: var(--vermillion-900);
+
+  /* Gray scale */
   --color-gray-50: var(--gray-50);
   --color-gray-100: var(--gray-100);
   --color-gray-200: var(--gray-200);
@@ -156,25 +116,6 @@
   --color-primary-700: var(--color-primary-700);
   --color-primary-800: var(--color-primary-800);
   --color-primary-900: var(--color-primary-900);
-
-  /* Semantic colors */
-  --color-background: var(--color-background);
-  --color-surface: var(--color-surface);
-  --color-text: var(--color-text);
-  --color-text-muted: var(--color-text-muted);
-  --color-border: var(--color-border);
-
-  /* Status */
-  --color-success: var(--color-success);
-  --color-warning: var(--color-warning);
-  --color-error: var(--color-error);
-  --color-accent: var(--color-accent);
-
-  /* Status (HEX fallback) */
-  --color-green-100: var(--green-100);
-  --color-green-800: var(--green-800);
-  --color-yellow-100: var(--yellow-100);
-  --color-yellow-800: var(--yellow-800);
 
   /*
    * Typography

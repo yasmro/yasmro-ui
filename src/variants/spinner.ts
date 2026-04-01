@@ -3,8 +3,8 @@ import { cva, type VariantProps } from 'class-variance-authority'
 export const spinnerVariants = cva('inline-flex items-center justify-center', {
   variants: {
     variant: {
-      default: 'text-ink-black',
-      inverse: 'text-paper-white',
+      default: 'text-foreground',
+      inverse: 'text-inverse-foreground',
     },
     size: {
       sm: 'size-4',

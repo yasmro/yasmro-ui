@@ -73,9 +73,6 @@ const preview: Preview = {
           body.classList.add('light')
         }
 
-        // Sync body background for Storybook iframe
-        body.style.backgroundColor = isDark ? '#1a1a1a' : '#fff'
-
         // Apply season theme
         if (season && season !== 'none') {
           root.setAttribute('data-season', season)
@@ -85,10 +82,7 @@ const preview: Preview = {
       }, [isDark, season])
 
       return (
-        <div
-          className={`${isDark ? 'dark' : ''} p-8`}
-          style={{ backgroundColor: isDark ? '#1a1a1a' : '#fff' }}
-        >
+        <div className={`${isDark ? 'dark' : ''} bg-background p-8`}>
           <Story />
         </div>
       )

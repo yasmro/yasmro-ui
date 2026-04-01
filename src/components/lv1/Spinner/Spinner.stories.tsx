@@ -83,7 +83,7 @@ export const Sizes: Story = {
 export const OnDarkBackground: Story = {
   name: 'On Dark Background',
   render: () => (
-    <div className="flex items-center gap-8 rounded-lg bg-ink-black p-8">
+    <div className="flex items-center gap-8 rounded-lg bg-solid p-8">
       <Spinner variant="inverse" type="default" />
       <Spinner variant="inverse" type="ripple" />
     </div>

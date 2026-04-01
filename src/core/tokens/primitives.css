@@ -1,6 +1,7 @@
 /*
  * Primitive Tokens (lv1)
  * Raw color palette - these are the "inventory" of colors
+ * Fixed values that NEVER change between light/dark modes.
  */
 
 :root {
@@ -17,10 +18,27 @@
   --gray-900: oklch(0.18 0 0);
   --gray-950: oklch(0.12 0 0);
 
-  /* Base colors */
-  --ink: oklch(0.15 0.01 250);
-  --paper-white: oklch(0.98 0.005 90);
-  --paper-warm: oklch(0.96 0.01 85);
+  /* Ink scale - Japanese calligraphy inspired */
+  --ink-black: #1a1a1a;
+  --ink-dark: #2d2d2d;
+  --ink-medium: #4a4a4a;
+  --ink-light: #6b6b6b;
+
+  /* Paper scale - washi paper inspired */
+  --paper-white: #fafafa;
+  --paper-warm: #f5f3f0;
+  --paper-cream: #f0ede8;
+
+  /* Ink inverted (for dark mode semantic mapping) */
+  --ink-black-inv: #e8e4df;
+  --ink-dark-inv: #d4d0cb;
+  --ink-medium-inv: #a8a4a0;
+  --ink-light-inv: #8a8680;
+
+  /* Paper inverted (for dark mode semantic mapping) */
+  --paper-white-inv: #1a1a1a;
+  --paper-warm-inv: #1e1e1c;
+  --paper-cream-inv: #252420;
 
   /* Accent: Vermillion (Japanese traditional) */
   --vermillion-100: oklch(0.96 0.04 25);
@@ -32,6 +50,12 @@
   --vermillion-700: oklch(0.46 0.12 25);
   --vermillion-800: oklch(0.36 0.1 25);
   --vermillion-900: oklch(0.27 0.08 25);
+
+  /* Vermillion HEX fallbacks */
+  --vermillion: #c53d43;
+  --vermillion-hover: #a8333a;
+  --vermillion-dark: #e05a60;
+  --vermillion-dark-hover: #f07078;
 
   /* Blue scale (default primary) */
   --blue-100: oklch(0.96 0.02 250);
