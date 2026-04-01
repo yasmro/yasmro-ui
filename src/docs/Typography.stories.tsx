@@ -85,7 +85,7 @@ export const Typography: Story = {
     <div className="max-w-3xl mx-auto px-8 py-12">
       <h1 className="text-4xl font-bold text-text mb-4">Typography</h1>
       <p className="text-base text-text-muted leading-relaxed mb-8">
-        yasmro's typography system provides consistent text styling across the design system.
+        Schatten's typography system provides consistent text styling across the design system.
         Semantic tokens bundle font size, line height, and weight into named roles — Heading, Body,
         and Label — so text styles are applied consistently without manual configuration.
       </p>

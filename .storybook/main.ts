@@ -16,7 +16,7 @@ const config: StorybookConfig = {
     config.plugins.push(tailwindcss())
 
     if (process.env.GITHUB_ACTIONS) {
-      config.base = '/yasmro-ui/'
+      config.base = '/schatten/'
     }
 
     return config

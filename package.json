@@ -1,5 +1,5 @@
 {
-  "name": "@yasmro/ui",
+  "name": "@yasmro/schatten",
   "version": "0.0.1",
   "packageManager": "pnpm@9.15.0",
   "description": "Design system with CSS variants and React components",
@@ -114,7 +114,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yasmro/yasmro-ui.git"
+    "url": "https://github.com/yasmro/schatten.git"
   },
   "keywords": [
     "design-system",

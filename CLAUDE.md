@@ -1,6 +1,6 @@
-# CLAUDE.md — yasmro-ui
+# CLAUDE.md — schatten-ui
 
-Design system component library based on [shadcn/ui](https://ui.shadcn.com/), customized for the yasmro brand.
+Design system component library based on [shadcn/ui](https://ui.shadcn.com/), customized for the Schatten brand.
 When adding or modifying components, follow shadcn/ui conventions (Radix UI + CVA + cn utility) as the baseline.
 
 ## Tech Stack

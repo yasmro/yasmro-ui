@@ -25,9 +25,9 @@ const DefaultSpinner = () => (
 
 const RippleSpinner = () => (
   <svg className="size-full" viewBox="0 0 72 72" fill="none" aria-hidden="true">
-    <circle className="yasmro-spinner-dot" cx="36" cy="36" r="2.6" fill="currentColor" />
+    <circle className="schatten-spinner-dot" cx="36" cy="36" r="2.6" fill="currentColor" />
     <circle
-      className="yasmro-spinner-ripple yasmro-spinner-ripple-1"
+      className="schatten-spinner-ripple schatten-spinner-ripple-1"
       cx="36"
       cy="36"
       r="10"
@@ -35,7 +35,7 @@ const RippleSpinner = () => (
       strokeWidth="1.4"
     />
     <circle
-      className="yasmro-spinner-ripple yasmro-spinner-ripple-2"
+      className="schatten-spinner-ripple schatten-spinner-ripple-2"
       cx="36"
       cy="36"
       r="10"
