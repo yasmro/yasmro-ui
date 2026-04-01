@@ -1,5 +1,5 @@
 {
-  "name": "@schatten/ui",
+  "name": "@yasmro/schatten",
   "version": "0.0.1",
   "packageManager": "pnpm@9.15.0",
   "description": "Design system with CSS variants and React components",
