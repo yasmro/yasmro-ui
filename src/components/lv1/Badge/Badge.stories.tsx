@@ -12,10 +12,10 @@ const meta: Meta<typeof Badge> = {
     variant: {
       description: 'Visual style of the badge.',
       control: 'select',
-      options: ['default', 'secondary', 'destructive', 'outline'],
+      options: ['primary', 'secondary', 'destructive', 'outline'],
       table: {
-        type: { summary: '"default" | "secondary" | "destructive" | "outline"' },
-        defaultValue: { summary: 'default' },
+        type: { summary: '"primary" | "secondary" | "destructive" | "outline"' },
+        defaultValue: { summary: 'primary' },
       },
     },
     size: {
@@ -60,7 +60,7 @@ type Story = StoryObj<typeof Badge>
 export const Playground: Story = {
   name: 'Playground',
   args: {
-    variant: 'default',
+    variant: 'primary',
     size: 'md',
     children: 'Badge',
   },
@@ -70,7 +70,7 @@ export const AllVariants: Story = {
   name: 'All Variants',
   render: () => (
     <div className="flex flex-wrap gap-4">
-      <Badge variant="default">Default</Badge>
+      <Badge variant="primary">Primary</Badge>
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="destructive">Destructive</Badge>
       <Badge variant="outline">Outline</Badge>

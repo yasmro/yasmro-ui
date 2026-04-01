@@ -5,7 +5,7 @@ export const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-ink-dark text-paper-warm',
+        primary: 'border-transparent bg-ink-dark text-paper-warm',
         secondary: 'border-transparent bg-paper-cream text-ink-black',
         destructive: 'border-transparent bg-vermillion text-paper-white',
         outline: 'text-ink-black',
@@ -17,7 +17,7 @@ export const badgeVariants = cva(
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'primary',
       size: 'md',
     },
   },
