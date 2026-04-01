@@ -44,6 +44,18 @@
   --blue-800: oklch(0.36 0.08 250);
   --blue-900: oklch(0.27 0.06 250);
 
+  /* Sumi (墨) scale - ink-tinted neutrals with subtle blue undertone */
+  --sumi-50: oklch(0.98 0.005 250);
+  --sumi-100: oklch(0.96 0.008 250);
+  --sumi-200: oklch(0.91 0.01 250);
+  --sumi-300: oklch(0.83 0.01 250);
+  --sumi-400: oklch(0.71 0.01 250);
+  --sumi-500: oklch(0.58 0.01 250);
+  --sumi-600: oklch(0.48 0.01 250);
+  --sumi-700: oklch(0.37 0.01 250);
+  --sumi-800: oklch(0.27 0.01 250);
+  --sumi-900: oklch(0.18 0.01 250);
+
   /* Success (Green) */
   --green-500: oklch(0.64 0.12 145);
   --green-600: oklch(0.56 0.11 145);

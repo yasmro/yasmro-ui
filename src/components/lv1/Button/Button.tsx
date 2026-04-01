@@ -35,13 +35,49 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : 'button'
     const IconComponent = icon ? icons[icon] : null
     const isIconOnly = !children && !!icon
+    const resolvedSize = variant === 'link' ? undefined : size
+
+    const linkSizeClass = size === 'lg' ? 'text-base' : size === 'sm' ? 'text-xs' : 'text-sm'
+
+    if (variant === 'link') {
+      return (
+        <Comp
+          className={cn(
+            'inline underline underline-offset-4 text-ink-black not-disabled:hover:text-ink-medium not-disabled:hover:no-underline not-disabled:hover:cursor-pointer transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink-black focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50',
+            linkSizeClass,
+            className,
+          )}
+          ref={ref}
+          disabled={disabled}
+          {...props}
+        >
+          {IconComponent && iconPosition === 'start' && (
+            <IconComponent
+              className="inline size-[0.75em] align-[-0.05em] mr-1"
+              aria-hidden="true"
+            />
+          )}
+          {children}
+          {IconComponent && iconPosition === 'end' && (
+            <IconComponent
+              className="inline size-[0.75em] align-[-0.05em] ml-1"
+              aria-hidden="true"
+            />
+          )}
+        </Comp>
+      )
+    }
 
     if (asChild) {
       if (process.env.NODE_ENV !== 'production' && isLoading) {
         console.warn('Button: `isLoading` prop is ignored when `asChild` is true.')
       }
       return (
-        <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+        <Comp
+          className={cn(buttonVariants({ variant, size: resolvedSize, className }))}
+          ref={ref}
+          {...props}
+        >
           {children}
         </Comp>
       )
@@ -50,7 +86,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={cn(
-          buttonVariants({ variant, size, className }),
+          buttonVariants({ variant, size: resolvedSize, className }),
           isIconOnly && 'aspect-square px-0',
           'relative',
         )}

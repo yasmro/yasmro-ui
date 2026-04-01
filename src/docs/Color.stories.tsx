@@ -207,6 +207,25 @@ export const Colors: Story = {
         ]}
       />
 
+      <SubsectionTitle>Sumi (墨)</SubsectionTitle>
+      <p className="text-sm text-text-muted mb-3">
+        Ink-tinted neutral scale with a subtle blue undertone, inspired by traditional sumi ink.
+      </p>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-sumi-50' },
+          { level: '100', className: 'bg-sumi-100' },
+          { level: '200', className: 'bg-sumi-200' },
+          { level: '300', className: 'bg-sumi-300' },
+          { level: '400', className: 'bg-sumi-400' },
+          { level: '500', className: 'bg-sumi-500' },
+          { level: '600', className: 'bg-sumi-600' },
+          { level: '700', className: 'bg-sumi-700' },
+          { level: '800', className: 'bg-sumi-800' },
+          { level: '900', className: 'bg-sumi-900' },
+        ]}
+      />
+
       <SectionTitle>Seasonal themes</SectionTitle>
       <p className="text-sm text-text-muted mb-4">
         Eight seasonal color themes based on the Japanese 二十四節気 (24 solar terms). Each theme

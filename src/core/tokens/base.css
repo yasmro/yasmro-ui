@@ -36,6 +36,7 @@
 
   /* Vermillion (朱) - traditional Japanese red */
   --vermillion: #c53d43;
+  --vermillion-hover: #a8333a;
 
   /* Status colors for compatibility */
   --green-100: #dcfce7;
@@ -59,6 +60,7 @@
     --sumi: #e8e4df;
     --sumi-faded: #c4c0bb;
     --vermillion: #e05a60;
+    --vermillion-hover: #f07078;
 
     --green-100: #1a3a2a;
     --green-800: #86efac;
@@ -81,6 +83,7 @@
   --sumi: #e8e4df;
   --sumi-faded: #c4c0bb;
   --vermillion: #e05a60;
+  --vermillion-hover: #f07078;
 
   --green-100: #1a3a2a;
   --green-800: #86efac;
@@ -107,6 +110,28 @@
   --color-sumi: var(--sumi);
   --color-sumi-faded: var(--sumi-faded);
   --color-vermillion: var(--vermillion);
+  --color-vermillion-hover: var(--vermillion-hover);
+  --color-vermillion-100: var(--vermillion-100);
+  --color-vermillion-200: var(--vermillion-200);
+  --color-vermillion-300: var(--vermillion-300);
+  --color-vermillion-400: var(--vermillion-400);
+  --color-vermillion-500: var(--vermillion-500);
+  --color-vermillion-600: var(--vermillion-600);
+  --color-vermillion-700: var(--vermillion-700);
+  --color-vermillion-800: var(--vermillion-800);
+  --color-vermillion-900: var(--vermillion-900);
+
+  /* Sumi scale */
+  --color-sumi-50: var(--sumi-50);
+  --color-sumi-100: var(--sumi-100);
+  --color-sumi-200: var(--sumi-200);
+  --color-sumi-300: var(--sumi-300);
+  --color-sumi-400: var(--sumi-400);
+  --color-sumi-500: var(--sumi-500);
+  --color-sumi-600: var(--sumi-600);
+  --color-sumi-700: var(--sumi-700);
+  --color-sumi-800: var(--sumi-800);
+  --color-sumi-900: var(--sumi-900);
 
   /* Gray scale (from primitives.css via OKLCH fallback) */
   --color-gray-50: var(--gray-50);

@@ -98,7 +98,6 @@ export const AllVariants: Story = {
       <Button variant="secondary">Secondary</Button>
       <Button variant="tertiary">Tertiary</Button>
       <Button variant="destructive">Destructive</Button>
-      <Button variant="link">Link</Button>
     </div>
   ),
 }
@@ -167,6 +166,25 @@ export const Loading: Story = {
   ),
 }
 
+export const LinkVariant: Story = {
+  name: 'Link',
+  render: () => (
+    <div className="flex flex-col gap-4 text-base text-ink-black leading-relaxed">
+      <p>
+        This is a paragraph with a <Button variant="link">link button</Button> embedded inline. It
+        behaves like a text link but retains button semantics for accessibility.
+      </p>
+      <p>
+        You can also add an icon:{' '}
+        <Button variant="link" icon="ExternalLink" iconPosition="end">
+          external link
+        </Button>{' '}
+        to indicate navigation.
+      </p>
+    </div>
+  ),
+}
+
 export const Disabled: Story = {
   name: 'Disabled',
   render: () => (
@@ -181,6 +199,13 @@ export const Disabled: Story = {
       <Button variant="destructive" disabled icon="Trash2">
         Delete
       </Button>
+      <p className="text-base text-ink-black">
+        Disabled{' '}
+        <Button variant="link" disabled>
+          link button
+        </Button>{' '}
+        in text.
+      </p>
     </div>
   ),
 }
