@@ -46,9 +46,14 @@ const RippleSpinner = () => (
 )
 
 export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
-  ({ className, size, type, label = 'Loading', ...props }, ref) => {
+  ({ className, variant, size, type, label = 'Loading', ...props }, ref) => {
     return (
-      <div className={cn(spinnerVariants({ size, className }))} role="status" ref={ref} {...props}>
+      <div
+        className={cn(spinnerVariants({ variant, size, className }))}
+        role="status"
+        ref={ref}
+        {...props}
+      >
         {type === 'ripple' ? <RippleSpinner /> : <DefaultSpinner />}
         <span className="sr-only">{label}</span>
       </div>

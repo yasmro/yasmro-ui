@@ -2,6 +2,10 @@ import { cva, type VariantProps } from 'class-variance-authority'
 
 export const spinnerVariants = cva('inline-flex items-center justify-center', {
   variants: {
+    variant: {
+      default: 'text-ink-black',
+      inverse: 'text-paper-white',
+    },
     size: {
       sm: 'size-4',
       md: 'size-6',
@@ -9,6 +13,7 @@ export const spinnerVariants = cva('inline-flex items-center justify-center', {
     },
   },
   defaultVariants: {
+    variant: 'default',
     size: 'md',
   },
 })
