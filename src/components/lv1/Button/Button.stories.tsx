@@ -199,6 +199,13 @@ export const Disabled: Story = {
       <Button variant="destructive" disabled icon="Trash2">
         Delete
       </Button>
+      <p className="text-base text-ink-black">
+        Disabled{' '}
+        <Button variant="link" disabled>
+          link button
+        </Button>{' '}
+        in text.
+      </p>
     </div>
   ),
 }
