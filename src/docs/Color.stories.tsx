@@ -53,8 +53,8 @@ export const Colors: Story = {
     <div className="max-w-3xl mx-auto px-8 py-12">
       <h1 className="text-4xl font-bold text-text mb-4">Colors</h1>
       <p className="text-base text-text-muted leading-relaxed mb-8">
-        yasmro's color system is inspired by Japanese calligraphy — ink on paper. The consistent use
-        of color in our design system keeps cognitive loads low and makes for a unified and
+        Schatten's color system is inspired by Japanese calligraphy — ink on paper. The consistent
+        use of color in our design system keeps cognitive loads low and makes for a unified and
         accessible user experience. Colors adapt automatically between light and dark mode.
       </p>
 
