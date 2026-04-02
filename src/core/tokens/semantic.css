@@ -8,6 +8,7 @@
 
 :root {
   /* Primary - will be overridden by themes */
+  --color-primary-50: var(--blue-50);
   --color-primary-100: var(--blue-100);
   --color-primary-200: var(--blue-200);
   --color-primary-300: var(--blue-300);
@@ -17,6 +18,7 @@
   --color-primary-700: var(--blue-700);
   --color-primary-800: var(--blue-800);
   --color-primary-900: var(--blue-900);
+  --color-primary-950: var(--blue-950);
 
   /* Surfaces */
   --color-background: var(--paper-warm);

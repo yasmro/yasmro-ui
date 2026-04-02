@@ -30,11 +30,15 @@ const ColorRow = ({
   </div>
 )
 
-const ScaleRow = ({ shades }: { shades: { level: string; className: string }[] }) => (
+const ScaleRow = ({
+  shades,
+}: {
+  shades: { level: string; className?: string; style?: React.CSSProperties }[]
+}) => (
   <div className="flex gap-1">
     {shades.map((s) => (
       <div key={s.level} className="flex flex-col items-center gap-1">
-        <div className={`w-12 h-12 rounded-lg ${s.className}`} />
+        <div className={`w-12 h-12 rounded-lg ${s.className ?? ''}`} style={s.style} />
         <span className="text-[10px] text-foreground-muted font-mono">{s.level}</span>
       </div>
     ))}
@@ -205,6 +209,7 @@ export const Colors: Story = {
       </p>
       <ScaleRow
         shades={[
+          { level: '50', className: 'bg-primary-50' },
           { level: '100', className: 'bg-primary-100' },
           { level: '200', className: 'bg-primary-200' },
           { level: '300', className: 'bg-primary-300' },
@@ -214,6 +219,7 @@ export const Colors: Story = {
           { level: '700', className: 'bg-primary-700' },
           { level: '800', className: 'bg-primary-800' },
           { level: '900', className: 'bg-primary-900' },
+          { level: '950', className: 'bg-primary-950' },
         ]}
       />
 
@@ -253,6 +259,116 @@ export const Colors: Story = {
           { level: '700', className: 'bg-sumi-700' },
           { level: '800', className: 'bg-sumi-800' },
           { level: '900', className: 'bg-sumi-900' },
+          { level: '950', className: 'bg-sumi-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Blue</SubsectionTitle>
+      <p className="text-sm text-foreground-muted mb-3">
+        Default primary color. Used as the base for the Primary scale when no seasonal theme is
+        active.
+      </p>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-blue-50' },
+          { level: '100', className: 'bg-blue-100' },
+          { level: '200', className: 'bg-blue-200' },
+          { level: '300', className: 'bg-blue-300' },
+          { level: '400', className: 'bg-blue-400' },
+          { level: '500', className: 'bg-blue-500' },
+          { level: '600', className: 'bg-blue-600' },
+          { level: '700', className: 'bg-blue-700' },
+          { level: '800', className: 'bg-blue-800' },
+          { level: '900', className: 'bg-blue-900' },
+          { level: '950', className: 'bg-blue-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Vermillion (朱)</SubsectionTitle>
+      <p className="text-sm text-foreground-muted mb-3">
+        Traditional Japanese vermillion red, used as the accent color.
+      </p>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-vermillion-50' },
+          { level: '100', className: 'bg-vermillion-100' },
+          { level: '200', className: 'bg-vermillion-200' },
+          { level: '300', className: 'bg-vermillion-300' },
+          { level: '400', className: 'bg-vermillion-400' },
+          { level: '500', className: 'bg-vermillion-500' },
+          { level: '600', className: 'bg-vermillion-600' },
+          { level: '700', className: 'bg-vermillion-700' },
+          { level: '800', className: 'bg-vermillion-800' },
+          { level: '900', className: 'bg-vermillion-900' },
+          { level: '950', className: 'bg-vermillion-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Green</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-green-50' },
+          { level: '100', className: 'bg-green-100' },
+          { level: '200', className: 'bg-green-200' },
+          { level: '300', className: 'bg-green-300' },
+          { level: '400', className: 'bg-green-400' },
+          { level: '500', className: 'bg-green-500' },
+          { level: '600', className: 'bg-green-600' },
+          { level: '700', className: 'bg-green-700' },
+          { level: '800', className: 'bg-green-800' },
+          { level: '900', className: 'bg-green-900' },
+          { level: '950', className: 'bg-green-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Yellow</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-yellow-50' },
+          { level: '100', className: 'bg-yellow-100' },
+          { level: '200', className: 'bg-yellow-200' },
+          { level: '300', className: 'bg-yellow-300' },
+          { level: '400', className: 'bg-yellow-400' },
+          { level: '500', className: 'bg-yellow-500' },
+          { level: '600', className: 'bg-yellow-600' },
+          { level: '700', className: 'bg-yellow-700' },
+          { level: '800', className: 'bg-yellow-800' },
+          { level: '900', className: 'bg-yellow-900' },
+          { level: '950', className: 'bg-yellow-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Amber</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-amber-50' },
+          { level: '100', className: 'bg-amber-100' },
+          { level: '200', className: 'bg-amber-200' },
+          { level: '300', className: 'bg-amber-300' },
+          { level: '400', className: 'bg-amber-400' },
+          { level: '500', className: 'bg-amber-500' },
+          { level: '600', className: 'bg-amber-600' },
+          { level: '700', className: 'bg-amber-700' },
+          { level: '800', className: 'bg-amber-800' },
+          { level: '900', className: 'bg-amber-900' },
+          { level: '950', className: 'bg-amber-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Purple</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-purple-50' },
+          { level: '100', className: 'bg-purple-100' },
+          { level: '200', className: 'bg-purple-200' },
+          { level: '300', className: 'bg-purple-300' },
+          { level: '400', className: 'bg-purple-400' },
+          { level: '500', className: 'bg-purple-500' },
+          { level: '600', className: 'bg-purple-600' },
+          { level: '700', className: 'bg-purple-700' },
+          { level: '800', className: 'bg-purple-800' },
+          { level: '900', className: 'bg-purple-900' },
+          { level: '950', className: 'bg-purple-950' },
         ]}
       />
 
@@ -275,44 +391,50 @@ export const Colors: Story = {
             { label: 'Winter Early', jp: '立冬', hue: 250 },
             { label: 'Winter Deep', jp: '冬至', hue: 255 },
           ] as const
-        ).map((season) => (
-          <div key={season.label} className="flex flex-col gap-1">
-            <p className="text-sm font-medium text-foreground">
-              {season.label} <span className="text-foreground-muted">({season.jp})</span>
-            </p>
-            <div className="flex gap-0.5">
-              {([100, 200, 300, 400, 500, 600, 700, 800, 900] as const).map((shade) => {
-                const lightness =
-                  shade === 100
-                    ? 0.96
-                    : shade === 200
-                      ? 0.91
-                      : shade === 300
-                        ? 0.83
-                        : shade === 400
-                          ? 0.74
-                          : shade === 500
-                            ? 0.64
-                            : shade === 600
-                              ? 0.56
-                              : shade === 700
-                                ? 0.46
-                                : shade === 800
-                                  ? 0.36
-                                  : 0.27
-                const chroma =
-                  shade <= 200 ? 0.04 : shade <= 500 ? 0.09 : shade <= 700 ? 0.08 : 0.05
-                return (
-                  <div
-                    key={shade}
-                    className="w-8 h-8 rounded-sm first:rounded-l-lg last:rounded-r-lg"
-                    style={{ backgroundColor: `oklch(${lightness} ${chroma} ${season.hue})` }}
-                  />
-                )
-              })}
+        ).map((season) => {
+          const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const
+          const lightnessMap: Record<number, number> = {
+            50: 0.98,
+            100: 0.96,
+            200: 0.91,
+            300: 0.83,
+            400: 0.74,
+            500: 0.64,
+            600: 0.56,
+            700: 0.46,
+            800: 0.36,
+            900: 0.27,
+            950: 0.15,
+          }
+          const chromaMap: Record<number, number> = {
+            50: 0.02,
+            100: 0.04,
+            200: 0.04,
+            300: 0.09,
+            400: 0.09,
+            500: 0.09,
+            600: 0.08,
+            700: 0.08,
+            800: 0.05,
+            900: 0.05,
+            950: 0.03,
+          }
+          return (
+            <div key={season.label}>
+              <p className="text-sm font-medium text-foreground mb-1">
+                {season.label} <span className="text-foreground-muted">({season.jp})</span>
+              </p>
+              <ScaleRow
+                shades={shades.map((s) => ({
+                  level: String(s),
+                  style: {
+                    backgroundColor: `oklch(${lightnessMap[s]} ${chromaMap[s]} ${season.hue})`,
+                  },
+                }))}
+              />
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   ),
