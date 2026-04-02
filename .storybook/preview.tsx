@@ -14,6 +14,11 @@ const preview: Preview = {
     },
     backgrounds: { disabled: true },
     layout: 'fullscreen',
+    options: {
+      storySort: {
+        order: ['Welcome', 'Foundation', 'Components'],
+      },
+    },
   },
   globalTypes: {
     theme: {
