@@ -169,7 +169,7 @@ export const Loading: Story = {
 export const LinkVariant: Story = {
   name: 'Link',
   render: () => (
-    <div className="flex flex-col gap-4 text-base text-ink-black leading-relaxed">
+    <div className="flex flex-col gap-4 text-base text-foreground leading-relaxed">
       <p>
         This is a paragraph with a <Button variant="link">link button</Button> embedded inline. It
         behaves like a text link but retains button semantics for accessibility.
@@ -199,7 +199,7 @@ export const Disabled: Story = {
       <Button variant="destructive" disabled icon="Trash2">
         Delete
       </Button>
-      <p className="text-base text-ink-black">
+      <p className="text-base text-foreground">
         Disabled{' '}
         <Button variant="link" disabled>
           link button

@@ -1,6 +1,7 @@
 /*
  * Primitive Tokens (lv1)
  * Raw color palette - these are the "inventory" of colors
+ * Fixed values that NEVER change between light/dark modes.
  */
 
 :root {
@@ -17,12 +18,30 @@
   --gray-900: oklch(0.18 0 0);
   --gray-950: oklch(0.12 0 0);
 
-  /* Base colors */
-  --ink: oklch(0.15 0.01 250);
-  --paper-white: oklch(0.98 0.005 90);
-  --paper-warm: oklch(0.96 0.01 85);
+  /* Ink scale - Japanese calligraphy inspired */
+  --ink-black: #1a1a1a;
+  --ink-dark: #2d2d2d;
+  --ink-medium: #4a4a4a;
+  --ink-light: #6b6b6b;
+
+  /* Paper scale - washi paper inspired */
+  --paper-white: #fafafa;
+  --paper-warm: #f5f3f0;
+  --paper-cream: #f0ede8;
+
+  /* Ink inverted (for dark mode semantic mapping) */
+  --ink-black-inv: #e8e4df;
+  --ink-dark-inv: #d4d0cb;
+  --ink-medium-inv: #a8a4a0;
+  --ink-light-inv: #8a8680;
+
+  /* Paper inverted (for dark mode semantic mapping) */
+  --paper-white-inv: #1a1a1a;
+  --paper-warm-inv: #1e1e1c;
+  --paper-cream-inv: #252420;
 
   /* Accent: Vermillion (Japanese traditional) */
+  --vermillion-50: oklch(0.98 0.02 25);
   --vermillion-100: oklch(0.96 0.04 25);
   --vermillion-200: oklch(0.91 0.08 25);
   --vermillion-300: oklch(0.83 0.12 25);
@@ -32,8 +51,16 @@
   --vermillion-700: oklch(0.46 0.12 25);
   --vermillion-800: oklch(0.36 0.1 25);
   --vermillion-900: oklch(0.27 0.08 25);
+  --vermillion-950: oklch(0.15 0.06 25);
+
+  /* Vermillion HEX fallbacks */
+  --vermillion: #c53d43;
+  --vermillion-hover: #a8333a;
+  --vermillion-dark: #e05a60;
+  --vermillion-dark-hover: #f07078;
 
   /* Blue scale (default primary) */
+  --blue-50: oklch(0.98 0.01 250);
   --blue-100: oklch(0.96 0.02 250);
   --blue-200: oklch(0.91 0.04 250);
   --blue-300: oklch(0.83 0.07 250);
@@ -43,6 +70,7 @@
   --blue-700: oklch(0.46 0.09 250);
   --blue-800: oklch(0.36 0.08 250);
   --blue-900: oklch(0.27 0.06 250);
+  --blue-950: oklch(0.15 0.04 250);
 
   /* Sumi (墨) scale - ink-tinted neutrals with subtle blue undertone */
   --sumi-50: oklch(0.98 0.005 250);
@@ -55,16 +83,57 @@
   --sumi-700: oklch(0.37 0.01 250);
   --sumi-800: oklch(0.27 0.01 250);
   --sumi-900: oklch(0.18 0.01 250);
+  --sumi-950: oklch(0.12 0.008 250);
 
-  /* Success (Green) */
+  /* Green scale (hue: 145) */
+  --green-50: oklch(0.98 0.02 145);
+  --green-100: oklch(0.96 0.03 145);
+  --green-200: oklch(0.91 0.06 145);
+  --green-300: oklch(0.83 0.09 145);
+  --green-400: oklch(0.74 0.11 145);
   --green-500: oklch(0.64 0.12 145);
   --green-600: oklch(0.56 0.11 145);
+  --green-700: oklch(0.46 0.09 145);
+  --green-800: oklch(0.36 0.07 145);
+  --green-900: oklch(0.27 0.05 145);
+  --green-950: oklch(0.15 0.03 145);
 
-  /* Warning (Amber) */
-  --amber-500: oklch(0.64 0.12 70);
-  --amber-600: oklch(0.56 0.11 70);
+  /* Yellow scale (hue: 90) */
+  --yellow-50: oklch(0.98 0.02 90);
+  --yellow-100: oklch(0.96 0.04 90);
+  --yellow-200: oklch(0.91 0.08 90);
+  --yellow-300: oklch(0.83 0.12 90);
+  --yellow-400: oklch(0.74 0.14 90);
+  --yellow-500: oklch(0.64 0.14 90);
+  --yellow-600: oklch(0.56 0.12 90);
+  --yellow-700: oklch(0.46 0.1 90);
+  --yellow-800: oklch(0.36 0.08 90);
+  --yellow-900: oklch(0.27 0.06 90);
+  --yellow-950: oklch(0.15 0.04 90);
 
-  /* Error (Red) */
-  --red-500: oklch(0.64 0.16 25);
-  --red-600: oklch(0.56 0.15 25);
+  /* Amber scale (hue: 65) */
+  --amber-50: oklch(0.98 0.02 65);
+  --amber-100: oklch(0.96 0.04 65);
+  --amber-200: oklch(0.91 0.08 65);
+  --amber-300: oklch(0.83 0.12 65);
+  --amber-400: oklch(0.74 0.14 65);
+  --amber-500: oklch(0.64 0.12 65);
+  --amber-600: oklch(0.56 0.11 65);
+  --amber-700: oklch(0.46 0.09 65);
+  --amber-800: oklch(0.36 0.07 65);
+  --amber-900: oklch(0.27 0.05 65);
+  --amber-950: oklch(0.15 0.03 65);
+
+  /* Purple scale (hue: 300) */
+  --purple-50: oklch(0.98 0.01 300);
+  --purple-100: oklch(0.96 0.02 300);
+  --purple-200: oklch(0.91 0.04 300);
+  --purple-300: oklch(0.83 0.07 300);
+  --purple-400: oklch(0.74 0.09 300);
+  --purple-500: oklch(0.64 0.1 300);
+  --purple-600: oklch(0.56 0.1 300);
+  --purple-700: oklch(0.46 0.09 300);
+  --purple-800: oklch(0.36 0.07 300);
+  --purple-900: oklch(0.27 0.05 300);
+  --purple-950: oklch(0.15 0.03 300);
 }

@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 
-export const textVariants = cva('text-ink-black antialiased', {
+export const textVariants = cva('text-foreground antialiased', {
   variants: {
     variant: {
       body: '',
@@ -16,9 +16,9 @@ export const textVariants = cva('text-ink-black antialiased', {
       '2xl': '',
     },
     color: {
-      default: 'text-ink-black',
-      muted: 'text-ink-light',
-      accent: 'text-vermillion',
+      default: 'text-foreground',
+      muted: 'text-foreground-muted',
+      accent: 'text-accent',
       inherit: 'text-inherit',
     },
     align: {

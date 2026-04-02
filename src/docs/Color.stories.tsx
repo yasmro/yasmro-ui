@@ -14,167 +14,202 @@ const ColorRow = ({
   name,
   description,
   className,
+  style,
 }: {
   name: string
   description: string
-  className: string
+  className?: string
+  style?: React.CSSProperties
 }) => (
   <div className="flex items-center gap-4 py-3 border-b border-border last:border-b-0">
-    <div className={`w-10 h-10 rounded-lg shrink-0 ${className}`} />
+    <div className={`w-10 h-10 rounded-lg shrink-0 ${className ?? ''}`} style={style} />
     <div>
-      <p className="text-sm font-medium text-text font-mono">{name}</p>
-      <p className="text-xs text-text-muted">{description}</p>
+      <p className="text-sm font-medium text-foreground font-mono">{name}</p>
+      <p className="text-xs text-foreground-muted">{description}</p>
     </div>
   </div>
 )
 
-const ScaleRow = ({ shades }: { shades: { level: string; className: string }[] }) => (
+const ScaleRow = ({
+  shades,
+}: {
+  shades: { level: string; className?: string; style?: React.CSSProperties }[]
+}) => (
   <div className="flex gap-1">
     {shades.map((s) => (
       <div key={s.level} className="flex flex-col items-center gap-1">
-        <div className={`w-12 h-12 rounded-lg ${s.className}`} />
-        <span className="text-[10px] text-text-muted font-mono">{s.level}</span>
+        <div className={`w-12 h-12 rounded-lg ${s.className ?? ''}`} style={s.style} />
+        <span className="text-[10px] text-foreground-muted font-mono">{s.level}</span>
       </div>
     ))}
   </div>
 )
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-2xl font-bold text-text mt-8 mb-2">{children}</h2>
+  <h2 className="text-2xl font-bold text-foreground mt-8 mb-2">{children}</h2>
 )
 
 const SubsectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="text-base font-semibold text-text mt-6 mb-3">{children}</h3>
+  <h3 className="text-base font-semibold text-foreground mt-6 mb-3">{children}</h3>
 )
 
 export const Colors: Story = {
   name: 'Colors',
   render: () => (
     <div className="max-w-3xl mx-auto px-8 py-12">
-      <h1 className="text-4xl font-bold text-text mb-4">Colors</h1>
-      <p className="text-base text-text-muted leading-relaxed mb-8">
+      <h1 className="text-4xl font-bold text-foreground mb-4">Colors</h1>
+      <p className="text-base text-foreground-muted leading-relaxed mb-8">
         Schatten's color system is inspired by Japanese calligraphy — ink on paper. The consistent
         use of color in our design system keeps cognitive loads low and makes for a unified and
         accessible user experience. Colors adapt automatically between light and dark mode.
       </p>
 
-      <SectionTitle>Color keys</SectionTitle>
+      <SectionTitle>Semantic Colors</SectionTitle>
+      <p className="text-sm text-foreground-muted mb-3">
+        These tokens are used in components. They automatically adapt to light/dark mode.
+      </p>
 
-      <SubsectionTitle>Semantic colors</SubsectionTitle>
+      <SubsectionTitle>Surfaces &amp; Foreground</SubsectionTitle>
       <div className="border border-border rounded-xl px-5">
-        <ColorRow name="background" description="Page background color" className="bg-background" />
+        <ColorRow
+          name="background"
+          description="Page background"
+          className="bg-background border border-border"
+        />
         <ColorRow
           name="surface"
           description="Card and container surfaces"
           className="bg-surface border border-border"
         />
         <ColorRow
-          name="text"
-          description="Primary text color for body content"
-          className="bg-text"
+          name="surface-hover"
+          description="Hover state for surfaces"
+          className="bg-surface-hover border border-border"
+        />
+        <ColorRow name="foreground" description="Primary text color" className="bg-foreground" />
+        <ColorRow
+          name="foreground-muted"
+          description="Secondary/helper text"
+          className="bg-foreground-muted"
         />
         <ColorRow
-          name="text-muted"
-          description="Secondary text for descriptions and helper text"
-          className="bg-text-muted"
+          name="foreground-subtle"
+          description="Tertiary text"
+          className="bg-foreground-subtle"
+        />
+      </div>
+
+      <SubsectionTitle>Solid (Filled Components)</SubsectionTitle>
+      <div className="border border-border rounded-xl px-5">
+        <ColorRow
+          name="solid"
+          description="Filled component background (e.g. primary button)"
+          className="bg-solid"
         />
         <ColorRow
-          name="border"
-          description="Default border for dividers and containers"
-          className="bg-border"
+          name="solid-hover"
+          description="Hover state for filled components"
+          className="bg-solid-hover"
+        />
+        <ColorRow
+          name="solid-foreground"
+          description="Text on filled components"
+          className="bg-solid-foreground border border-border"
+        />
+      </div>
+
+      <SubsectionTitle>Destructive &amp; Accent</SubsectionTitle>
+      <div className="border border-border rounded-xl px-5">
+        <ColorRow name="destructive" description="Destructive actions" className="bg-destructive" />
+        <ColorRow
+          name="destructive-foreground"
+          description="Text on destructive"
+          className="bg-destructive-foreground border border-border"
         />
         <ColorRow
           name="accent"
-          description="Vermillion accent for emphasis and highlights"
+          description="Vermillion accent for emphasis"
           className="bg-accent"
         />
       </div>
 
-      <SubsectionTitle>Status colors</SubsectionTitle>
+      <SubsectionTitle>Border &amp; Ring</SubsectionTitle>
       <div className="border border-border rounded-xl px-5">
+        <ColorRow name="border" description="Default border for dividers" className="bg-border" />
         <ColorRow
-          name="success"
-          description="Positive actions and states (completion, approval)"
-          className="bg-success"
+          name="border-strong"
+          description="Strong border (e.g. secondary button)"
+          className="bg-border-strong"
         />
+        <ColorRow name="ring" description="Focus ring color" className="bg-ring" />
+      </div>
+
+      <SubsectionTitle>Status</SubsectionTitle>
+      <div className="border border-border rounded-xl px-5">
+        <ColorRow name="success" description="Positive actions and states" className="bg-success" />
         <ColorRow
           name="warning"
           description="Caution states that need attention"
           className="bg-warning"
         />
-        <ColorRow
-          name="error"
-          description="Destructive actions and error states"
-          className="bg-error"
-        />
+        <ColorRow name="error" description="Error states" className="bg-error" />
       </div>
+
+      <SectionTitle>Primitive Palette</SectionTitle>
+      <p className="text-sm text-foreground-muted mb-3">
+        Core brand colors inspired by Japanese calligraphy. These are fixed values that do not
+        change between light and dark mode. Components should use semantic tokens above instead.
+      </p>
 
       <SubsectionTitle>Ink &amp; Paper</SubsectionTitle>
-      <p className="text-sm text-text-muted mb-3">
-        Core brand palette inspired by Japanese calligraphy. These are the foundational colors.
-      </p>
       <div className="border border-border rounded-xl px-5">
         <ColorRow
-          name="ink-black"
-          description="Darkest ink tone — primary text and emphasis"
-          className="bg-ink-black"
+          name="--ink-black"
+          description="#1a1a1a — Darkest ink tone"
+          style={{ backgroundColor: 'var(--ink-black)' }}
         />
         <ColorRow
-          name="ink-dark"
-          description="Secondary ink tone for headings"
-          className="bg-ink-dark"
+          name="--ink-dark"
+          description="#2d2d2d — Secondary ink tone"
+          style={{ backgroundColor: 'var(--ink-dark)' }}
         />
         <ColorRow
-          name="ink-medium"
-          description="Medium ink tone for body text"
-          className="bg-ink-medium"
+          name="--ink-medium"
+          description="#4a4a4a — Medium ink tone"
+          style={{ backgroundColor: 'var(--ink-medium)' }}
         />
         <ColorRow
-          name="ink-light"
-          description="Light ink for muted or disabled text"
-          className="bg-ink-light"
+          name="--ink-light"
+          description="#6b6b6b — Light ink"
+          style={{ backgroundColor: 'var(--ink-light)' }}
         />
         <ColorRow
-          name="paper-white"
-          description="Lightest paper — main background"
-          className="bg-paper-white border border-border"
+          name="--paper-white"
+          description="#fafafa — Lightest paper"
+          style={{ backgroundColor: 'var(--paper-white)', border: '1px solid var(--color-border)' }}
         />
         <ColorRow
-          name="paper-warm"
-          description="Warm paper tone for subtle backgrounds"
-          className="bg-paper-warm border border-border"
+          name="--paper-warm"
+          description="#f5f3f0 — Warm paper"
+          style={{ backgroundColor: 'var(--paper-warm)', border: '1px solid var(--color-border)' }}
         />
         <ColorRow
-          name="paper-cream"
-          description="Cream paper for cards and elevated surfaces"
-          className="bg-paper-cream border border-border"
-        />
-        <ColorRow
-          name="sumi"
-          description="Sumi (墨) — traditional ink accent"
-          className="bg-sumi"
-        />
-        <ColorRow
-          name="sumi-faded"
-          description="Faded sumi for secondary accents"
-          className="bg-sumi-faded"
-        />
-        <ColorRow
-          name="vermillion"
-          description="Vermillion (朱) — traditional Japanese red"
-          className="bg-vermillion"
+          name="--paper-cream"
+          description="#f0ede8 — Cream paper"
+          style={{ backgroundColor: 'var(--paper-cream)', border: '1px solid var(--color-border)' }}
         />
       </div>
 
-      <SectionTitle>Color scales</SectionTitle>
+      <SectionTitle>Color Scales</SectionTitle>
 
       <SubsectionTitle>Primary</SubsectionTitle>
-      <p className="text-sm text-text-muted mb-3">
+      <p className="text-sm text-foreground-muted mb-3">
         Primary color scale mapped from theme tokens. The default theme uses blue; seasonal themes
         override this entire scale.
       </p>
       <ScaleRow
         shades={[
+          { level: '50', className: 'bg-primary-50' },
           { level: '100', className: 'bg-primary-100' },
           { level: '200', className: 'bg-primary-200' },
           { level: '300', className: 'bg-primary-300' },
@@ -184,11 +219,12 @@ export const Colors: Story = {
           { level: '700', className: 'bg-primary-700' },
           { level: '800', className: 'bg-primary-800' },
           { level: '900', className: 'bg-primary-900' },
+          { level: '950', className: 'bg-primary-950' },
         ]}
       />
 
       <SubsectionTitle>Gray</SubsectionTitle>
-      <p className="text-sm text-text-muted mb-3">
+      <p className="text-sm text-foreground-muted mb-3">
         Neutral gray scale defined in OKLCH for perceptually uniform steps.
       </p>
       <ScaleRow
@@ -208,7 +244,7 @@ export const Colors: Story = {
       />
 
       <SubsectionTitle>Sumi (墨)</SubsectionTitle>
-      <p className="text-sm text-text-muted mb-3">
+      <p className="text-sm text-foreground-muted mb-3">
         Ink-tinted neutral scale with a subtle blue undertone, inspired by traditional sumi ink.
       </p>
       <ScaleRow
@@ -223,11 +259,121 @@ export const Colors: Story = {
           { level: '700', className: 'bg-sumi-700' },
           { level: '800', className: 'bg-sumi-800' },
           { level: '900', className: 'bg-sumi-900' },
+          { level: '950', className: 'bg-sumi-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Blue</SubsectionTitle>
+      <p className="text-sm text-foreground-muted mb-3">
+        Default primary color. Used as the base for the Primary scale when no seasonal theme is
+        active.
+      </p>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-blue-50' },
+          { level: '100', className: 'bg-blue-100' },
+          { level: '200', className: 'bg-blue-200' },
+          { level: '300', className: 'bg-blue-300' },
+          { level: '400', className: 'bg-blue-400' },
+          { level: '500', className: 'bg-blue-500' },
+          { level: '600', className: 'bg-blue-600' },
+          { level: '700', className: 'bg-blue-700' },
+          { level: '800', className: 'bg-blue-800' },
+          { level: '900', className: 'bg-blue-900' },
+          { level: '950', className: 'bg-blue-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Vermillion (朱)</SubsectionTitle>
+      <p className="text-sm text-foreground-muted mb-3">
+        Traditional Japanese vermillion red, used as the accent color.
+      </p>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-vermillion-50' },
+          { level: '100', className: 'bg-vermillion-100' },
+          { level: '200', className: 'bg-vermillion-200' },
+          { level: '300', className: 'bg-vermillion-300' },
+          { level: '400', className: 'bg-vermillion-400' },
+          { level: '500', className: 'bg-vermillion-500' },
+          { level: '600', className: 'bg-vermillion-600' },
+          { level: '700', className: 'bg-vermillion-700' },
+          { level: '800', className: 'bg-vermillion-800' },
+          { level: '900', className: 'bg-vermillion-900' },
+          { level: '950', className: 'bg-vermillion-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Green</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-green-50' },
+          { level: '100', className: 'bg-green-100' },
+          { level: '200', className: 'bg-green-200' },
+          { level: '300', className: 'bg-green-300' },
+          { level: '400', className: 'bg-green-400' },
+          { level: '500', className: 'bg-green-500' },
+          { level: '600', className: 'bg-green-600' },
+          { level: '700', className: 'bg-green-700' },
+          { level: '800', className: 'bg-green-800' },
+          { level: '900', className: 'bg-green-900' },
+          { level: '950', className: 'bg-green-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Yellow</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-yellow-50' },
+          { level: '100', className: 'bg-yellow-100' },
+          { level: '200', className: 'bg-yellow-200' },
+          { level: '300', className: 'bg-yellow-300' },
+          { level: '400', className: 'bg-yellow-400' },
+          { level: '500', className: 'bg-yellow-500' },
+          { level: '600', className: 'bg-yellow-600' },
+          { level: '700', className: 'bg-yellow-700' },
+          { level: '800', className: 'bg-yellow-800' },
+          { level: '900', className: 'bg-yellow-900' },
+          { level: '950', className: 'bg-yellow-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Amber</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-amber-50' },
+          { level: '100', className: 'bg-amber-100' },
+          { level: '200', className: 'bg-amber-200' },
+          { level: '300', className: 'bg-amber-300' },
+          { level: '400', className: 'bg-amber-400' },
+          { level: '500', className: 'bg-amber-500' },
+          { level: '600', className: 'bg-amber-600' },
+          { level: '700', className: 'bg-amber-700' },
+          { level: '800', className: 'bg-amber-800' },
+          { level: '900', className: 'bg-amber-900' },
+          { level: '950', className: 'bg-amber-950' },
+        ]}
+      />
+
+      <SubsectionTitle>Purple</SubsectionTitle>
+      <ScaleRow
+        shades={[
+          { level: '50', className: 'bg-purple-50' },
+          { level: '100', className: 'bg-purple-100' },
+          { level: '200', className: 'bg-purple-200' },
+          { level: '300', className: 'bg-purple-300' },
+          { level: '400', className: 'bg-purple-400' },
+          { level: '500', className: 'bg-purple-500' },
+          { level: '600', className: 'bg-purple-600' },
+          { level: '700', className: 'bg-purple-700' },
+          { level: '800', className: 'bg-purple-800' },
+          { level: '900', className: 'bg-purple-900' },
+          { level: '950', className: 'bg-purple-950' },
         ]}
       />
 
       <SectionTitle>Seasonal themes</SectionTitle>
-      <p className="text-sm text-text-muted mb-4">
+      <p className="text-sm text-foreground-muted mb-4">
         Eight seasonal color themes based on the Japanese 二十四節気 (24 solar terms). Each theme
         overrides the primary color scale via the{' '}
         <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded">data-season</code> attribute on
@@ -245,44 +391,50 @@ export const Colors: Story = {
             { label: 'Winter Early', jp: '立冬', hue: 250 },
             { label: 'Winter Deep', jp: '冬至', hue: 255 },
           ] as const
-        ).map((season) => (
-          <div key={season.label} className="flex flex-col gap-1">
-            <p className="text-sm font-medium text-text">
-              {season.label} <span className="text-text-muted">({season.jp})</span>
-            </p>
-            <div className="flex gap-0.5">
-              {([100, 200, 300, 400, 500, 600, 700, 800, 900] as const).map((shade) => {
-                const lightness =
-                  shade === 100
-                    ? 0.96
-                    : shade === 200
-                      ? 0.91
-                      : shade === 300
-                        ? 0.83
-                        : shade === 400
-                          ? 0.74
-                          : shade === 500
-                            ? 0.64
-                            : shade === 600
-                              ? 0.56
-                              : shade === 700
-                                ? 0.46
-                                : shade === 800
-                                  ? 0.36
-                                  : 0.27
-                const chroma =
-                  shade <= 200 ? 0.04 : shade <= 500 ? 0.09 : shade <= 700 ? 0.08 : 0.05
-                return (
-                  <div
-                    key={shade}
-                    className="w-8 h-8 rounded-sm first:rounded-l-lg last:rounded-r-lg"
-                    style={{ backgroundColor: `oklch(${lightness} ${chroma} ${season.hue})` }}
-                  />
-                )
-              })}
+        ).map((season) => {
+          const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950] as const
+          const lightnessMap: Record<number, number> = {
+            50: 0.98,
+            100: 0.96,
+            200: 0.91,
+            300: 0.83,
+            400: 0.74,
+            500: 0.64,
+            600: 0.56,
+            700: 0.46,
+            800: 0.36,
+            900: 0.27,
+            950: 0.15,
+          }
+          const chromaMap: Record<number, number> = {
+            50: 0.02,
+            100: 0.04,
+            200: 0.04,
+            300: 0.09,
+            400: 0.09,
+            500: 0.09,
+            600: 0.08,
+            700: 0.08,
+            800: 0.05,
+            900: 0.05,
+            950: 0.03,
+          }
+          return (
+            <div key={season.label}>
+              <p className="text-sm font-medium text-foreground mb-1">
+                {season.label} <span className="text-foreground-muted">({season.jp})</span>
+              </p>
+              <ScaleRow
+                shades={shades.map((s) => ({
+                  level: String(s),
+                  style: {
+                    backgroundColor: `oklch(${lightnessMap[s]} ${chromaMap[s]} ${season.hue})`,
+                  },
+                }))}
+              />
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   ),
