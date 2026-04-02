@@ -20,7 +20,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,
-      variant,
+      variant = 'primary',
       size,
       asChild = false,
       icon,
@@ -101,7 +101,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           )}
           aria-hidden={!isLoading}
         >
-          <Spinner size="sm" className="size-[1em]" label="Loading" />
+          <Spinner
+            size="sm"
+            className="size-[1em]"
+            label="Loading"
+            variant={variant === 'primary' || variant === 'destructive' ? 'inverse' : 'default'}
+          />
         </span>
         <span
           className={cn(
