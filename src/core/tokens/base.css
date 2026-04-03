@@ -36,6 +36,7 @@
   --color-solid: var(--color-solid);
   --color-solid-hover: var(--color-solid-hover);
   --color-solid-foreground: var(--color-solid-foreground);
+  --color-solid-foreground-hover: var(--color-solid-foreground-hover);
 
   /* Destructive */
   --color-destructive: var(--color-destructive);

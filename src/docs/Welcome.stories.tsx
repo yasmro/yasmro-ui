@@ -14,6 +14,16 @@ const meta: Meta = {
 export default meta
 type Story = StoryObj
 
+const navigateToStory = (e: React.MouseEvent, storyPath: string) => {
+  e.preventDefault()
+  const targetPath = `/docs/${storyPath}--docs`
+  if (window.parent !== window) {
+    window.parent.location.href = `${window.parent.location.origin}/?path=${targetPath}`
+  } else {
+    window.location.href = `/?path=${targetPath}`
+  }
+}
+
 const ComponentCard = ({
   name,
   description,
@@ -26,7 +36,8 @@ const ComponentCard = ({
   storyPath: string
 }) => (
   <a
-    href={`?path=/docs/${storyPath}--docs`}
+    href={`/docs/${storyPath}--docs`}
+    onClick={(e) => navigateToStory(e, storyPath)}
     className="group block border border-border rounded-xl overflow-hidden no-underline transition-shadow duration-200 hover:shadow-md"
   >
     <div className="flex items-center justify-center h-40 bg-surface">{children}</div>
@@ -136,7 +147,8 @@ export const Overview: Story = {
         <h2 className="text-xl font-bold text-foreground mb-4">Foundation</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           <a
-            href="?path=/docs/foundation-color--docs"
+            href="/docs/foundation-color--docs"
+            onClick={(e) => navigateToStory(e, 'foundation-color')}
             className="group block border border-border rounded-xl overflow-hidden no-underline transition-shadow duration-200 hover:shadow-md"
           >
             <div className="flex items-center justify-center h-40 bg-surface">
@@ -153,7 +165,8 @@ export const Overview: Story = {
           </a>
 
           <a
-            href="?path=/docs/foundation-typography--docs"
+            href="/docs/foundation-typography--docs"
+            onClick={(e) => navigateToStory(e, 'foundation-typography')}
             className="group block border border-border rounded-xl overflow-hidden no-underline transition-shadow duration-200 hover:shadow-md"
           >
             <div className="flex items-center justify-center h-40 bg-surface">

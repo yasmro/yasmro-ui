@@ -31,9 +31,10 @@
   --color-foreground-subtle: var(--ink-medium);
 
   /* Solid (filled component backgrounds) */
-  --color-solid: var(--ink-dark);
-  --color-solid-hover: var(--ink-black);
-  --color-solid-foreground: var(--paper-warm);
+  --color-solid: var(--alabaster-700);
+  --color-solid-hover: var(--alabaster-900);
+  --color-solid-foreground: var(--alabaster-100);
+  --color-solid-foreground-hover: var(--alabaster-300);
 
   /* Destructive */
   --color-destructive: var(--vermillion);
@@ -75,9 +76,10 @@
     --color-foreground-muted: var(--ink-light-inv);
     --color-foreground-subtle: var(--ink-medium-inv);
 
-    --color-solid: var(--ink-dark-inv);
-    --color-solid-hover: var(--ink-black-inv);
-    --color-solid-foreground: var(--paper-warm-inv);
+    --color-solid: var(--alabaster-300);
+    --color-solid-hover: var(--alabaster-100);
+    --color-solid-foreground: var(--alabaster-800);
+    --color-solid-foreground-hover: var(--alabaster-700);
 
     --color-destructive: var(--vermillion-dark);
     --color-destructive-hover: var(--vermillion-dark-hover);
@@ -106,9 +108,10 @@
   --color-foreground-muted: var(--ink-light-inv);
   --color-foreground-subtle: var(--ink-medium-inv);
 
-  --color-solid: var(--ink-dark-inv);
-  --color-solid-hover: var(--ink-black-inv);
-  --color-solid-foreground: var(--paper-warm-inv);
+  --color-solid: var(--alabaster-300);
+  --color-solid-hover: var(--alabaster-100);
+  --color-solid-foreground: var(--alabaster-800);
+  --color-solid-foreground-hover: var(--alabaster-700);
 
   --color-destructive: var(--vermillion-dark);
   --color-destructive-hover: var(--vermillion-dark-hover);
